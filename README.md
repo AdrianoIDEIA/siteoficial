@@ -1,6 +1,6 @@
-# Index Terapias
+# EIBM Terapias - Site Oficial
 
-Aplicação React para apresentação de serviços de terapias especializadas.
+Aplicação React para apresentação de serviços de terapias especializadas da EIBM.
 
 ## Estrutura do Projeto
 
