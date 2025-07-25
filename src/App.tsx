@@ -657,14 +657,17 @@ export default function App() {
             </AnimatedSection>
           </div>
           
-          <motion.div 
-            className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center p-3 rounded-full bg-white/70 backdrop-blur-sm shadow-md"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <p className="text-sm text-blue-700 mb-1">Conheça o nosso método</p>
-            <ChevronDown className="w-5 h-5 text-blue-500 mx-auto" />
-          </motion.div>
+          {/* Scroll Indicator - Posicionado após os cards */}
+          <div className="flex justify-center mt-8 md:mt-12 mb-6 md:mb-8 px-4">
+            <motion.div 
+              className="text-center p-3 md:p-4 rounded-full bg-white/80 backdrop-blur-sm shadow-lg border border-blue-100 max-w-xs md:max-w-none"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <p className="text-xs md:text-sm text-blue-700 mb-1 md:mb-2 font-medium">Conheça o nosso método</p>
+              <ChevronDown className="w-5 h-5 md:w-6 md:h-6 text-blue-500 mx-auto" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
