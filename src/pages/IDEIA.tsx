@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Card } from './components/ui/card';
-import { Badge } from './components/ui/badge';
-import { Button } from './components/ui/button';
-import { ImageWithFallback } from './components/figma/ImageWithFallback';
+import { Card } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/button';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { 
   Heart, Users, Brain, Target, CheckCircle, Activity, Baby, GraduationCap,
   Puzzle, Lightbulb, TrendingUp, Award, Menu, X, Home, School, 
@@ -13,11 +13,11 @@ import {
 } from 'lucide-react';
 
 // Components
-import { AnimatedSection } from './components/AnimatedSection';
-import { HeroCard } from './components/HeroCard';
-import { ScrollIndicator } from './components/ScrollIndicator';
-import { ParallaxLamp } from './components/ParallaxLamp';
-import { BackToTopButton } from './components/BackToTopButton';
+import { AnimatedSection } from '../components/AnimatedSection';
+import { HeroCard } from '../components/HeroCard';
+import { ScrollIndicator } from '../components/ScrollIndicator';
+import { ParallaxLamp } from '../components/ParallaxLamp';
+import { BackToTopButton } from '../components/BackToTopButton';
 
 interface IDEIAPageProps {
   onNavigateHome?: () => void;
