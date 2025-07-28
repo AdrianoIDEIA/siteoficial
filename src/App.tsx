@@ -11,6 +11,8 @@ import FonoaudiologiaPage from './pages/FonoaudiologiaPage';
 import PsicologiaPage from './pages/PsicologiaPage';
 import PsicopedagogiaPage from './pages/PsicopedagogiaPage';
 import TerapiaOcupacionalPage from './pages/TerapiaOcupacionalPage';
+import IDEIAPage from './pages/IDEIA';
+import LogoEIBM from './components/LogoEIBM';
 
 // Simple ImageWithFallback component
 const ImageWithFallback = ({ src, alt, className, style = {}, ...props }: any) => {
@@ -463,19 +465,23 @@ export default function App() {
 
   // Renderizar páginas específicas
   if (currentPage === 'psicologia') {
-    return <PsicologiaPage onNavigateHome={navigateHome} />;
+    return <PsicologiaPage onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
   }
   
   if (currentPage === 'fonoaudiologia') {
-    return <FonoaudiologiaPage onNavigateHome={navigateHome} />;
+    return <FonoaudiologiaPage onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
   }
   
   if (currentPage === 'psicopedagogia') {
-    return <PsicopedagogiaPage onNavigateHome={navigateHome} />;
-  }
+      return <PsicopedagogiaPage onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
+    }
   
   if (currentPage === 'terapia-ocupacional') {
-    return <TerapiaOcupacionalPage onNavigateHome={navigateHome} />;
+      return <TerapiaOcupacionalPage onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
+    }
+
+  if (currentPage === 'ideia') {
+    return <IDEIAPage onNavigateHome={navigateHome} />;
   }
 
   return (
@@ -493,14 +499,7 @@ export default function App() {
             className="flex items-center"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="flex items-center space-x-2">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-full p-2">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <span className="font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                EIBM Terapias
-              </span>
-            </div>
+            <LogoEIBM className="h-10" />
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -545,12 +544,7 @@ export default function App() {
           transition={{ duration: 0.3 }}
         >
           <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center space-x-2">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-full p-2">
-                <Heart className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-bold">EIBM</span>
-            </div>
+            <LogoEIBM className="h-8" />
             <button onClick={() => setMobileMenuOpen(false)}>
               <X className="w-6 h-6 text-gray-600" />
             </button>
@@ -823,13 +817,7 @@ export default function App() {
               viewport={{ once: true }}
             >
               <div className="flex items-center space-x-3">
-                <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-full p-2">
-                  <Heart className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold">EIBM</h3>
-                  <p className="text-xs text-gray-400">Especialidades Integradas e Bem-estar Multidisciplinar</p>
-                </div>
+                <LogoEIBM className="h-12" />
               </div>
             </motion.div>
             
@@ -1066,8 +1054,14 @@ export default function App() {
               Abordagem inovadora
             </li>
           </ul>
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-            <Heart className="w-4 h-4 mr-2" />
+          <Button 
+            className="inline-flex items-center gap-2 mt-4 bg-blue-700 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-full shadow-lg transition"
+            onClick={() => {
+              closeModal();
+              navigateToPage('ideia');
+            }}
+          >
+            <Heart className="w-4 h-4" />
             Conheça o IDEIA
           </Button>
         </div>

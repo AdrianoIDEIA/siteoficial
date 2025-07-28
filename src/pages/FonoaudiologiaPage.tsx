@@ -3,6 +3,8 @@ import { motion, useInView } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { 
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette, 
@@ -207,9 +209,10 @@ const DevelopmentTimeline = () => {
 
 interface FonoaudiologiaPageProps {
   onNavigateHome?: () => void;
+  onNavigateToPage?: (page: string) => void;
 }
 
-export default function App({ onNavigateHome }: FonoaudiologiaPageProps = {}) {
+export default function App({ onNavigateHome, onNavigateToPage }: FonoaudiologiaPageProps = {}) {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -507,105 +510,11 @@ export default function App({ onNavigateHome }: FonoaudiologiaPageProps = {}) {
       </div>
 
       {/* Header */}
-      <motion.header 
-        className="fixed top-0 left-0 w-full bg-white shadow-md rounded-b-xl z-50"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100 }}
-      >
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <motion.button 
-            onClick={() => onNavigateHome?.()}
-            className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="flex items-center space-x-2">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-full p-2">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <span className="font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                EIBM Terapias
-              </span>
-            </div>
-          </motion.button>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.name}
-                onClick={() => navigateToPage(item.page)}
-                className={`text-black hover:text-blue-700 font-medium transition-colors relative ${
-                  item.page === 'fonoaudiologia' ? 'text-blue-700' : ''
-                }`}
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {item.name}
-                <motion.div
-                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600"
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                  initial={{ width: item.page === 'fonoaudiologia' ? "100%" : "0%" }}
-                />
-              </motion.button>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            id="mobile-menu-button"
-            className="md:hidden text-gray-800 hover:text-orange-500 focus:outline-none"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <motion.div
-          id="mobile-menu"
-          className="md:hidden fixed top-0 left-0 h-full w-3/4 max-w-xs bg-white shadow-lg z-50 p-5"
-          initial={{ x: '-100%' }}
-          animate={{ x: mobileMenuOpen ? 0 : '-100%' }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center space-x-2">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-full p-2">
-                <Heart className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-bold">EIBM</span>
-            </div>
-            <button onClick={() => setMobileMenuOpen(false)}>
-              <X className="w-6 h-6 text-gray-600" />
-            </button>
-          </div>
-          
-          <ul className="space-y-4">
-            {navItems.map((item, index) => (
-              <motion.li key={item.name}>
-                <button 
-                  onClick={() => {
-                    navigateToPage(item.page);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`block py-2 font-medium w-full text-left transition-colors ${
-                    item.page === 'fonoaudiologia' 
-                      ? 'text-blue-600' 
-                      : 'text-gray-700 hover:text-blue-600'
-                  }`}
-                >
-                  {item.name}
-                </button>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
-      </motion.header>
+      <Header 
+        onNavigateHome={onNavigateHome} 
+        onNavigateToPage={onNavigateToPage}
+        currentPage="fonoaudiologia"
+      />
 
       {/* Hero Section */}
       <section className="pt-12 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 lg:pt-32 lg:pb-24 relative overflow-hidden">
@@ -1317,88 +1226,28 @@ export default function App({ onNavigateHome }: FonoaudiologiaPageProps = {}) {
       
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="sm:col-span-2 lg:col-span-1"
-            >
-              <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
-                <div className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-full p-1.5 sm:p-2">
-                  <Mic className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-sm sm:text-base font-bold">EIBM Fonoaudiologia</h3>
-                  <p className="text-xs sm:text-sm text-gray-400">Comunicação Humana</p>
-                </div>
-              </div>
-              <p className="text-gray-400 leading-relaxed text-xs sm:text-sm">
-                Especialistas em comunicação humana com abordagem científica 
-                e humanizada para todas as idades.
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <h4 className="text-sm sm:text-base font-bold mb-4 sm:mb-6">Áreas de Atuação</h4>
-              <ul className="space-y-2 sm:space-y-3 text-gray-400 text-xs sm:text-sm">
-                <li>Linguagem e Fala</li>
-                <li>Audição</li>
-                <li>Voz</li>
-                <li>Fluência</li>
-                <li>Funções Orofaciais</li>
-                <li>Deglutição</li>
-              </ul>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <h4 className="text-sm sm:text-base font-bold mb-4 sm:mb-6">Distúrbios Tratados</h4>
-              <ul className="space-y-2 sm:space-y-3 text-gray-400 text-xs sm:text-sm">
-                <li>Atrasos de Fala</li>
-                <li>Gagueira</li>
-                <li>Perda Auditiva</li>
-                <li>Rouquidão</li>
-                <li>Afasia</li>
-                <li>Disfagia</li>
-              </ul>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <h4 className="text-sm sm:text-base font-bold mb-4 sm:mb-6">Sobre a EIBM</h4>
-              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                Comprometidos com a excelência em fonoaudiologia, 
-                oferecemos cuidado especializado baseado em evidências científicas.
-              </p>
-            </motion.div>
-          </div>
-          
-          <motion.div 
-            className="border-t border-gray-700 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-gray-400"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-xs sm:text-sm">&copy; 2025 EIBM Fonoaudiologia - Todos os direitos reservados</p>
-          </motion.div>
-        </div>
-      </footer>
+      <Footer
+        specialtyName="Fonoaudiologia"
+        specialtyDescription="Comunicação Humana"
+        specialtyIcon={<Mic className="w-4 h-4 sm:w-6 sm:h-6 text-white" />}
+        areas={[
+          "Linguagem e Fala",
+          "Audição",
+          "Voz",
+          "Fluência",
+          "Funções Orofaciais",
+          "Deglutição"
+        ]}
+        treatments={[
+          "Atrasos de Fala",
+          "Gagueira",
+          "Perda Auditiva",
+          "Rouquidão",
+          "Afasia",
+          "Disfagia"
+        ]}
+        aboutText="Comprometidos com a excelência em fonoaudiologia, oferecemos cuidado especializado baseado em evidências científicas."
+      />
     </div>
   );
 }
