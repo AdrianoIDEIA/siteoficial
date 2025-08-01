@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = ({
   aboutText
 }) => {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 sm:py-16">
+    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 sm:py-16 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           <motion.div

@@ -10,6 +10,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@delorenj/mcp-server-trello": "^1.0.0",
+    "@enconvo/trello-mcp-server": "^0.1.4",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.15",

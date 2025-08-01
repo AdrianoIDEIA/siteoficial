@@ -384,7 +384,7 @@ export default function PsicopedagogiaPage({ onNavigateHome, onNavigateToPage }:
   const navItems = ['Dificuldades', 'Desenvolvimento', 'Habilidades Cognitivas', 'Intervenção', 'Vínculo'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-white to-purple-50 flex flex-col">
       {/* Floating Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
@@ -539,7 +539,7 @@ export default function PsicopedagogiaPage({ onNavigateHome, onNavigateToPage }:
       </section>
 
       {/* Dificuldades de Aprendizagem */}
-      <section id="dificuldades" className="py-16 sm:py-20 lg:py-24 bg-white relative">
+      <section id="dificuldades" className="py-16 sm:py-20 lg:py-24 bg-white relative flex-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-12 sm:mb-16 lg:mb-20"

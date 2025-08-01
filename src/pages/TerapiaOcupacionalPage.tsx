@@ -351,7 +351,7 @@ export default function TerapiaOcupacionalPage({ onNavigateHome, onNavigateToPag
   const navItems = ['Conceitos', 'Desenvolvimento', 'Autismo', 'Reabilitação', 'Saúde Mental'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50 flex flex-col">
       {/* Floating Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
@@ -498,7 +498,7 @@ export default function TerapiaOcupacionalPage({ onNavigateHome, onNavigateToPag
       </section>
 
       {/* Conceitos Fundamentais */}
-      <section id="conceitos" className="py-16 sm:py-20 lg:py-24 bg-white relative">
+      <section id="conceitos" className="py-16 sm:py-20 lg:py-24 bg-white relative flex-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-12 sm:mb-16 lg:mb-20"

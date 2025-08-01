@@ -1,5 +1,12 @@
-export { Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter } from './card';
-export { Badge } from './badge';
-export { Button } from './button';
-export { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './dialog';
+export * from './badge';
+export * from './button';
+export * from './card';
+export * from './dialog';
+export * from './Modal';
+export * from './AnimatedSection';
+export * from './ParallaxElement';
+export * from './AppComponents';
+export * from './SynopsisModal';
+export * from './AppHeader';
+export * from './AppFooter';
 export { cn } from '../../lib/utils';

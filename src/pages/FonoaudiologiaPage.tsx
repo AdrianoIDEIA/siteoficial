@@ -9,7 +9,7 @@ import {
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette, 
   Smile, TreePine, Flower2, Menu, X, Mic, VolumeX, Volume2, MessageCircle, Stethoscope, 
-  Languages, School, Clock, AlertTriangle, HelpCircle, Waves, Star, ArrowRight, Timer,
+  Languages, School, Clock, AlertTriangle, HelpCircle, Waves, Star, Timer,
   Headphones, Speaker, MicIcon, Pause, FileAudio
 } from 'lucide-react';
 
@@ -216,6 +216,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
   const [activeService, setActiveService] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
   const fundamentalConcepts = [
     {
@@ -468,7 +469,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 via-white to-cyan-50">
+    <div className="min-h-screen bg-gradient-to-b from-teal-50 via-white to-cyan-50 flex flex-col">
       {/* Floating Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
@@ -515,6 +516,8 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
         onNavigateToPage={onNavigateToPage}
         currentPage="fonoaudiologia"
       />
+
+
 
       {/* Hero Section */}
       <section className="pt-12 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 lg:pt-32 lg:pb-24 relative overflow-hidden">
@@ -623,7 +626,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
       </section>
 
       {/* Conceitos Fundamentais */}
-      <section id="o-que-e" className="py-16 sm:py-20 lg:py-24 bg-white relative">
+      <section id="o-que-e" className="py-16 sm:py-20 lg:py-24 bg-white relative flex-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-12 sm:mb-16 lg:mb-20"
