@@ -412,7 +412,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
               </motion.a>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.2} className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-3 mt-8 md:mt-0">
+            <AnimatedSection delay={0.2} className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-3 mt-8 md:mt-0">
               {therapyCards.map((therapy, index) => (
                 <motion.button
                   key={therapy.id}

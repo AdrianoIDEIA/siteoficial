@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Versão 'escrito' para fallback -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 6000 2000" version="1.1">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .str0 {stroke:#373435;stroke-width:220.81;stroke-miterlimit:22.9256}
+      .fil2 {fill:none}
+      .fil3 {fill:#1886EF}
+      .fil5 {fill:#75BB17}
+      .fil4 {fill:#EECC25}
+      .fil6 {fill:#F1401B}
+      .fil7 {fill:#373435;fill-rule:nonzero}
+      .fil0 {fill:#4967AF;fill-opacity:0.501961}
+      .fil1 {fill:#4967AF;fill-rule:nonzero;fill-opacity:0.501961}
+    ]]></style>
+  </defs>
+  <g>
+    <circle cx="800" cy="900" r="260" fill="#1886EF"/>
+    <rect x="520" y="1180" width="560" height="140" rx="70" fill="#75BB17"/>
+    <rect x="600" y="1350" width="400" height="80" rx="40" fill="#EECC25"/>
+    <rect x="700" y="1470" width="200" height="60" rx="30" fill="#F1401B"/>
+    <text x="1400" y="980" font-family="Arial, Helvetica, sans-serif" font-size="420" font-weight="700" fill="#195184">Clínica EIBM</text>
+    <text x="1400" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="260" fill="#2563eb">Especialidades Integradas</text>
+  </g>
+</svg>
+

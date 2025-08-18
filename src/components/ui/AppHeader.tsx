@@ -22,6 +22,8 @@ export const AppHeader: React.FC<HeaderProps> = ({
     e.preventDefault();
     if (href === '/terapias' && onNavigateToPage) {
       onNavigateToPage('terapias');
+    } else if (href === '/clinica' && onNavigateToPage) {
+      onNavigateToPage('clinica');
     } else {
       // Para outros links, usar navegação normal
       window.location.href = href;

@@ -117,10 +117,18 @@ export const SynopsisModal: React.FC<SynopsisModalProps> = ({
                 onCloseSynopsis();
                 return;
               }
-              if (modal.id === 'terapias' && onNavigateToPage) {
-                onNavigateToPage('terapias');
+              // Fecha o modal antes de navegar para evitar sobreposição visual
+              onCloseSynopsis();
+              if (onNavigateToPage) {
+                if (modal.id === 'terapias') {
+                  onNavigateToPage('terapias');
+                } else if (modal.id === 'especialidades') {
+                  onNavigateToPage('clinica');
+                } else {
+                  // fallback para links existentes
+                  window.location.href = modal.buttonLink;
+                }
               } else {
-                // Para outros modais, usar o link original
                 window.location.href = modal.buttonLink;
               }
             }}

@@ -1,0 +1,70 @@
+/* Paleta e utilitários para a página Clínica EIBM (compatível com Tailwind v3) */
+
+:root {
+	--clinica-primary: #195184;
+	--clinica-primary-medium: #136CB2;
+	--clinica-primary-light: #439CD5;
+	--clinica-foreground: #0f172a; /* slate-900 */
+	--clinica-muted-foreground: #64748b; /* slate-500 */
+}
+
+/* Cores de texto */
+.text-foreground { color: var(--clinica-foreground); }
+.text-muted-foreground { color: var(--clinica-muted-foreground); }
+.text-primary { color: var(--clinica-primary); }
+.text-primary-medium { color: var(--clinica-primary-medium); }
+.text-primary-light { color: var(--clinica-primary-light); }
+
+/* Cores de fundo diretas */
+.bg-primary { background-color: var(--clinica-primary); }
+.bg-primary-medium { background-color: var(--clinica-primary-medium); }
+.bg-primary-light { background-color: var(--clinica-primary-light); }
+
+/* Suporte às classes de gradiente do Tailwind */
+.from-primary {
+	--tw-gradient-from: var(--clinica-primary) var(--tw-gradient-from-position);
+	--tw-gradient-to: rgb(25 81 132 / 0) var(--tw-gradient-to-position);
+	--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.via-primary-medium {
+	--tw-gradient-to: rgb(19 108 178 / 0) var(--tw-gradient-to-position);
+	--tw-gradient-stops: var(--tw-gradient-from), var(--clinica-primary-medium) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.to-primary-light {
+	--tw-gradient-to: var(--clinica-primary-light) var(--tw-gradient-to-position);
+}
+
+/* Efeitos glass usados no header e cartões */
+.glass {
+	background: rgba(255, 255, 255, 0.25);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 8px 32px 0 rgba(25, 81, 132, 0.15);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+}
+.glass-hover {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-hover:hover {
+	background: rgba(255, 255, 255, 0.35);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	transform: translateY(-2px);
+}
+.header-glass {
+	background: rgba(248, 251, 255, 0.85);
+	border: 1px solid rgba(25, 81, 132, 0.2);
+	box-shadow: 0 4px 20px 0 rgba(25, 81, 132, 0.15);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+
+/* Animações utilitárias */
+@keyframes clinica-float {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-10px); }
+}
+.animate-float {
+	animation: clinica-float 6s ease-in-out infinite;
+}
+
+

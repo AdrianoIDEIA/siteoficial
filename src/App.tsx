@@ -8,6 +8,7 @@ import PsicologiaPage from './pages/PsicologiaPage';
 import PsicopedagogiaPage from './pages/PsicopedagogiaPage';
 import TerapiaOcupacionalPage from './pages/TerapiaOcupacionalPage';
 import IDEIA from './pages/IDEIA';
+import ClinicaEIBM from './pages/ClinicaEIBM';
 import './styles/App.css';
 import './styles/animations.css';
 
@@ -22,8 +23,16 @@ function App() {
 
   // Navegação
   const navigateToPage = (page: string) => {
+    // Fecha qualquer modal aberto primeiro
+    closeSynopsis();
+    // Navega para a página solicitada
     setCurrentPage(page);
-    closeSynopsis(); // Fecha qualquer modal aberto
+    // Garante que a nova página apareça do topo
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (_) {
+      /* no-op */
+    }
   };
 
   const navigateHome = () => {
@@ -65,6 +74,10 @@ function App() {
 
   if (currentPage === 'ideia') {
     return <IDEIA onNavigateHome={navigateHome} />;
+  }
+
+  if (currentPage === 'clinica') {
+    return <ClinicaEIBM />;
   }
 
   return (

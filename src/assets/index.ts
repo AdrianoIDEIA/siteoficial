@@ -20,6 +20,7 @@ export { default as logoSemBolinha } from './logosembolinha.png';
 export { default as orelhaIcon } from './orelha.png';
 export { default as uniaoIcon } from './uniao.png';
 
+
 // Imagens com nomes gerados automaticamente
 export { default as image1 } from './image-2WetKysKSlcQwO8GtGKi6AaBiYR0ce.png';
 export { default as image2 } from './image-3ASRLW6PRip9jvMzJWwwUzRYB26X4c.png';
