@@ -43,6 +43,32 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Clinic-specific color variables */
+  --clinic-primary: #195184;
+  --clinic-primary-foreground: #ffffff;
+  --clinic-primary-medium: #136CB2;
+  --clinic-primary-light: #439CD5;
+  --clinic-secondary: #f1f7ff;
+  --clinic-secondary-foreground: #195184;
+  --clinic-muted: #f8fbff;
+  --clinic-accent: #e0f0ff;
+  --clinic-accent-foreground: #195184;
+  --clinic-border: rgba(25, 81, 132, 0.15);
+  --clinic-input-background: #f8fbff;
+  --clinic-ring: #439CD5;
+  
+  /* Glass effect variables */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px 0 rgba(25, 81, 132, 0.37);
+  --glass-backdrop: blur(20px);
+  
+  /* Header specific glass effect for better visibility */
+  --header-glass-bg: rgba(248, 251, 255, 0.85);
+  --header-glass-border: rgba(25, 81, 132, 0.2);
+  --header-glass-shadow: 0 4px 20px 0 rgba(25, 81, 132, 0.15);
+  --header-glass-backdrop: blur(12px);
 }
 
 .dark {
@@ -80,6 +106,32 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+
+  /* Clinic-specific dark mode variables */
+  --clinic-primary: #439CD5;
+  --clinic-primary-foreground: #0f172a;
+  --clinic-primary-medium: #136CB2;
+  --clinic-primary-light: #60a5fa;
+  --clinic-secondary: #1e293b;
+  --clinic-secondary-foreground: #f1f5f9;
+  --clinic-muted: #334155;
+  --clinic-accent: #1e293b;
+  --clinic-accent-foreground: #f1f5f9;
+  --clinic-border: rgba(67, 156, 213, 0.2);
+  --clinic-input-background: #334155;
+  --clinic-ring: #439CD5;
+  
+  /* Glass effect variables for dark mode */
+  --glass-bg: rgba(30, 41, 59, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-backdrop: blur(20px);
+  
+  /* Header specific glass effect for dark mode */
+  --header-glass-bg: rgba(15, 23, 42, 0.9);
+  --header-glass-border: rgba(67, 156, 213, 0.25);
+  --header-glass-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
+  --header-glass-backdrop: blur(12px);
 }
 
 @layer base {
@@ -97,4 +149,59 @@
 
 html {
   font-size: var(--font-size);
+}
+
+/* Glass morphism utility classes */
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+  }
+  
+  .glass-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .header-glass {
+    background: var(--header-glass-bg);
+    border: 1px solid var(--header-glass-border);
+    box-shadow: var(--header-glass-shadow);
+    backdrop-filter: var(--header-glass-backdrop);
+    -webkit-backdrop-filter: var(--header-glass-backdrop);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }

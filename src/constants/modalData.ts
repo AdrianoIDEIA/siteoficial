@@ -185,7 +185,7 @@ export const MODAL_DATA: Record<string, ModalData> = {
     sectionIcon: Award,
     buttonText: 'Explorar Clínica',
     buttonIcon: Award,
-    buttonLink: 'especialidades.html',
+    buttonLink: '/clinica',
     colorScheme: {
       primary: '#6CBB45',
       secondary: '#22c55e',
@@ -284,7 +284,7 @@ export const CIRCLE_DATA = [
 ];
 
 export const NAVIGATION_LINKS = [
-  { href: 'especialidades.html', label: 'Clínica EIBM' },
+  { href: '/clinica', label: 'Clínica EIBM' },
   { href: 'gatta.html', label: 'GATTA' },
   { href: '/terapias', label: 'EIBM Terapias' },
   { href: 'ideia.html', label: 'IDEIA' },
