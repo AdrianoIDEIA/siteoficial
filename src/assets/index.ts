@@ -1,13 +1,5 @@
-// Logos
-export { default as logoEibmClinica } from './logo_eibm_clinica.svg';
-export { default as logoEibmClinicaEscrito } from './logo_eibm_clinica_escrito.svg';
-export { default as logoEibmTerapias } from './logo_eibm_terapias.svg';
-export { default as logoEibmTerapiasEscrito } from './logo_eibm_terapias_escrito.svg';
-export { default as logoGatta } from './logo_gatta.svg';
-export { default as logoGattaEscrito } from './logo_gatta_escrito.svg';
-export { default as logoIdeia } from './logo_ideia.svg';
-export { default as logoIdeiaEscrito } from './logo_ideia_escrito.svg';
-export { default as logoIdeiaLampada } from './logo_ideia_lampada.svg';
+// Logos (usar somente formatos compatíveis com o pipeline atual)
+// SVGs complexos foram removidos para evitar erros do SVGR no build
 
 // Imagens das especialidades
 export { default as fonoaudiologiaImg } from './Fonoaudiologia.jpg';

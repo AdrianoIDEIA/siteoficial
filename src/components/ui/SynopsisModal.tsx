@@ -17,6 +17,7 @@ interface SynopsisModalProps {
   onCardClick: (cardType: string) => void;
   onModalClick: (e: React.MouseEvent) => void;
   onNavigateToPage?: (page: string) => void;
+  disableNavigation?: boolean;
 }
 
 export const SynopsisModal: React.FC<SynopsisModalProps> = ({
@@ -26,7 +27,8 @@ export const SynopsisModal: React.FC<SynopsisModalProps> = ({
   onCloseSynopsis,
   onCardClick,
   onModalClick,
-  onNavigateToPage
+  onNavigateToPage,
+  disableNavigation = false
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const isActive = activeSynopsis === modal.id;
@@ -111,6 +113,10 @@ export const SynopsisModal: React.FC<SynopsisModalProps> = ({
             className="synopsis-button morphing-button"
             onClick={(e) => {
               e.preventDefault();
+              if (disableNavigation) {
+                onCloseSynopsis();
+                return;
+              }
               if (modal.id === 'terapias' && onNavigateToPage) {
                 onNavigateToPage('terapias');
               } else {

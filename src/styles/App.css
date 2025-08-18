@@ -408,15 +408,7 @@ body.mobile-menu-active::after {
   font-weight: var(--font-weight-medium);
 }
 
-/* Mouse follower effect */
-.mouse-follower {
-  position: absolute;
-  pointer-events: none;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 50%);
-  transition: transform 0.1s ease;
-  z-index: 5;
-}
+
 
 /* Interactive card animations */
 .interactive-card {
