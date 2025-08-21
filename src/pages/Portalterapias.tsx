@@ -8,7 +8,7 @@ import { StandardHeader } from '../components/StandardHeader';
 import {
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,       
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette,
-  Smile, TreePine, Flower2, ChevronDown, ArrowRight, Star, Play, Clock, FileText,
+  Smile, TreePine, Flower2, ChevronDown, ArrowUp, Star, Play, Clock, FileText,
   UserCheck, School, Home, BarChart3, Trophy, ExternalLink, Folder
 } from 'lucide-react';
 
@@ -98,6 +98,10 @@ interface PortalterapiasProps {
 export default function Portalterapias({ onNavigateHome, onNavigateToPage }: PortalterapiasProps) {
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [copySuccess, setCopySuccess] = useState(false);
+  const step1Ref = useRef<HTMLElement | null>(null);
+  const isStep1InView = useInView(step1Ref, { amount: 0.2 });
+  const heroRef = useRef<HTMLElement | null>(null);
+  const isHeroInView = useInView(heroRef, { amount: 0.6 });
 
   const openModal = (modalId: string) => setActiveModal(modalId);
   const closeModal = () => setActiveModal(null);
@@ -373,7 +377,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
       />
 
       {/* Hero Section */}
-      <section className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-white py-24 relative flex items-center">
+      <section ref={heroRef} className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-white py-24 relative flex items-center">
         {/* Parallax Background Elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <ParallaxElement speed={0.7} className="absolute top-32 left-20 lg:left-80">
@@ -399,6 +403,11 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid md:grid-cols-5 gap-6 items-center">
             <AnimatedSection className="md:col-span-2 text-center md:text-left">
+              <div className="mb-2">
+                <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
+                  EIBM Terapias
+                </Badge>
+              </div>
               <div className="flex justify-center md:justify-start mb-3">
                 <img src="/logo_eibm_terapias.svg" alt="EIBM Terapias" className="h-48 sm:h-56 md:h-72 w-auto" />
               </div>
@@ -462,9 +471,10 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
           </div>
           
           <motion.div 
-            className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center p-3 rounded-full bg-white/70 backdrop-blur-sm shadow-md"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            className="fixed bottom-4 left-1/2 transform -translate-x-1/2 text-center p-3 rounded-full bg-white/70 backdrop-blur-sm shadow-md z-50"
+            initial={{ opacity: 1 }}
+            animate={{ y: [0, -10, 0], opacity: isStep1InView ? 0 : 1 }}
+            transition={{ duration: 2, repeat: Infinity, opacity: { duration: 0.3 } }}
           >
             <p className="text-sm text-blue-700 mb-1">Conheça o nosso método</p>
             <ChevronDown className="w-5 h-5 text-blue-500 mx-auto" />
@@ -482,6 +492,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
             key={step.number}
             id={`step-${step.number}`}
             className={`py-20 relative bg-gradient-to-br ${step.bgGradient}`}
+            ref={step.number === 1 ? step1Ref : undefined}
           >
             <div className="container mx-auto px-4 relative z-10">
               <div className="grid lg:grid-cols-12 gap-8 items-start">
@@ -782,14 +793,15 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
 
       {/* Back to Top Button */}
       <motion.button
-        className="fixed bottom-6 right-6 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg focus:outline-none hover:bg-blue-700 z-50"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
+        className={`fixed bottom-6 right-6 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg focus:outline-none hover:bg-blue-700 z-50 ${isHeroInView ? 'pointer-events-none' : ''}`}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: isHeroInView ? 0 : 1, scale: isHeroInView ? 0.9 : 1 }}
+        transition={{ duration: 0.3 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <ArrowRight className="w-5 h-5 transform -rotate-90" />
+        <ArrowUp className="w-5 h-5" />
       </motion.button>
 
       {/* Modals */}

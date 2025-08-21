@@ -19,7 +19,7 @@ export const StandardHeader: React.FC<StandardHeaderProps> = ({
     { label: 'Início', page: 'home' },
     { label: 'Terapias', page: 'terapias' },
     { label: 'Especialidades', page: 'clinica' },
-    { label: 'IDEA', page: 'ideia' },
+    { label: 'IDEIA', page: 'ideia' },
     { label: 'GETTON', page: 'gatton' },
     { label: 'Contato', page: 'contatos' }
   ];

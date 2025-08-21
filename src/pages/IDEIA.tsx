@@ -171,11 +171,11 @@ export default function App({ onNavigateHome, onNavigateToPage }: IDEIAPageProps
       </div>
 
       {/* Hero Section */}
-      <section className="min-h-screen pt-32 pb-24 flex flex-col justify-center relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+      <section className="min-h-screen bg-gradient-to-b from-orange-100 via-orange-300 to-white py-24 relative flex items-center overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 relative z-10 grid md:grid-cols-5 gap-y-8 gap-x-16 items-center">
           {/* Left Text */}
           <motion.div 
-            className="w-full lg:w-1/2 text-center lg:text-left"
+            className="w-full md:col-span-2 text-center md:text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -190,6 +190,10 @@ export default function App({ onNavigateHome, onNavigateToPage }: IDEIAPageProps
                 Instituto de Desenvolvimento Inclusivo
               </Badge>
             </motion.div>
+
+            <div className="flex justify-center lg:justify-start mb-4">
+              <img src="/logo_ideia.svg" alt="EIBM IDEIA" className="h-48 sm:h-56 md:h-72 w-auto" />
+            </div>
 
             <motion.h1 
               className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6"
@@ -238,7 +242,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: IDEIAPageProps
 
           {/* Right Cards */}
           <motion.div 
-            className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="w-full md:col-span-3 grid grid-cols-2 gap-6"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}

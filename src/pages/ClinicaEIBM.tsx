@@ -45,8 +45,8 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
       {/* Hero */}
       <section className="pt-12 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 lg:pt-32 lg:pb-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <motion.div className="space-y-6 sm:space-y-8 text-center lg:text-left" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+          <div className="grid grid-cols-1 gap-8 items-center justify-items-center">
+            <motion.div className="space-y-6 sm:space-y-8 text-center" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <div className="space-y-4 sm:space-y-6">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                   <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
@@ -54,8 +54,8 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
                     Especialidades Integradas
                   </Badge>
                 </motion.div>
-                <div className="flex justify-center lg:justify-start mb-2">
-                  <img src="/logo_eibm_clinica.svg" alt="EIBM Clínica" className="h-16 sm:h-20 md:h-24 w-auto" />
+                <div className="flex justify-center mb-2">
+                  <img src="/logo_eibm_clinica.svg" alt="EIBM Clínica" className="h-48 sm:h-56 md:h-72 w-auto" />
                 </div>
                 <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
                   <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-600 bg-clip-text text-transparent">Especialidades EIBM</span>
@@ -68,18 +68,6 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
                   Na Clínica EIBM, unimos especialidades médicas e terapêuticas para entregar diagnósticos precisos e planos de cuidado personalizados, em um único ecossistema.
                 </motion.p>
               </div>
-            </motion.div>
-
-            <motion.div className="relative order-first lg:order-last" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-              <motion.div className="relative z-10" whileHover={{ scale: 1.02 }} transition={{ type: 'spring', stiffness: 300 }}>
-                <ImageWithFallback src="https://images.unsplash.com/photo-1580281657527-47d1cfba5d0e?w=600&h=600&fit=crop" alt="Equipe de saúde integrada" className="rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-md mx-auto lg:max-w-full" />
-              </motion.div>
-              <motion.div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-200 to-sky-300 rounded-full opacity-80 shadow-lg flex items-center justify-center" animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
-                <Shield className="w-8 h-8 sm:w-12 sm:h-12 text-blue-700" />
-              </motion.div>
-              <motion.div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-sky-200 to-blue-300 rounded-full opacity-80 shadow-lg flex items-center justify-center" animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}>
-                <Cpu className="w-6 h-6 sm:w-10 sm:h-10 text-sky-700" />
-              </motion.div>
             </motion.div>
           </div>
         </div>
