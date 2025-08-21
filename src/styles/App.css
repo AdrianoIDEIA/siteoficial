@@ -119,11 +119,11 @@ body.mobile-menu-active::after {
 }
 
 .synopsis-header {
-  background: linear-gradient(135deg, var(--header-color-1) 0%, var(--header-color-2) 100%);
+  background: transparent;
   padding: 2.25rem 2rem;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
 }
 
 .synopsis-header::before {
@@ -271,17 +271,75 @@ body.mobile-menu-active::after {
   transform: rotate(90deg) scale(1.1);
 }
 
-.synopsis-title { 
+/* Cores específicas para cada modal */
+/* IDEIA - Amarelo */
+[data-modal-id="idea"] .synopsis-title,
+[data-modal-id="idea"] h3 { 
   font-size: 2rem; 
   font-weight: 800; 
   margin-bottom: 0.5rem; 
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #EFCD18;
+  text-shadow: none;
 }
 
-.synopsis-subtitle { 
+[data-modal-id="idea"] .synopsis-subtitle,
+[data-modal-id="idea"] p { 
   font-size: 1.1rem; 
-  color: rgba(255, 255, 255, 0.9);
+  color: #000000;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* GATTON - Vermelho */
+[data-modal-id="transtornos"] .synopsis-title,
+[data-modal-id="transtornos"] h3 { 
+  font-size: 2rem; 
+  font-weight: 800; 
+  margin-bottom: 0.5rem; 
+  color: #ED3924;
+  text-shadow: none;
+}
+
+[data-modal-id="transtornos"] .synopsis-subtitle,
+[data-modal-id="transtornos"] p { 
+  font-size: 1.1rem; 
+  color: #000000;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* Especialidades - Verde */
+[data-modal-id="especialidades"] .synopsis-title,
+[data-modal-id="especialidades"] h3 { 
+  font-size: 2rem; 
+  font-weight: 800; 
+  margin-bottom: 0.5rem; 
+  color: #6CBB45;
+  text-shadow: none;
+}
+
+[data-modal-id="especialidades"] .synopsis-subtitle,
+[data-modal-id="especialidades"] p { 
+  font-size: 1.1rem; 
+  color: #000000;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* EIBM Terapias - Azul */
+[data-modal-id="terapias"] .synopsis-title,
+[data-modal-id="terapias"] h3 { 
+  font-size: 2rem; 
+  font-weight: 800; 
+  margin-bottom: 0.5rem; 
+  color: #195184;
+  text-shadow: none;
+}
+
+[data-modal-id="terapias"] .synopsis-subtitle,
+[data-modal-id="terapias"] p { 
+  font-size: 1.1rem; 
+  color: #000000;
   margin-bottom: 0;
   font-weight: 400;
 }

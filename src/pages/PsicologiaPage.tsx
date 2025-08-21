@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import Header from '../components/Header';
+import { StandardHeader } from '../components/StandardHeader';
 import Footer from '../components/Footer';
 import { 
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
@@ -489,7 +489,11 @@ export default function App({ onNavigateHome, onNavigateToPage }: PsicologiaPage
       </div>
 
       {/* Header */}
-      <Header onNavigateHome={onNavigateHome} onNavigateToPage={onNavigateToPage} />
+      <StandardHeader 
+        onNavigateHome={onNavigateHome}
+        onNavigateToPage={onNavigateToPage}
+        currentPage="psicologia"
+      />
 
       {/* Hero Section */}
       <section className="pt-12 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 lg:pt-32 lg:pb-24 relative overflow-hidden">

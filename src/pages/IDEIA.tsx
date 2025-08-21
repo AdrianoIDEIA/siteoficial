@@ -18,12 +18,15 @@ import { HeroCard } from '../components/HeroCard';
 import { ScrollIndicator } from '../components/ScrollIndicator';
 import { ParallaxLamp } from '../components/ParallaxLamp';
 import { BackToTopButton } from '../components/BackToTopButton';
+import { PageHeader } from '../components/PageHeader';
+import { StandardHeader } from '../components/StandardHeader';
 
 interface IDEIAPageProps {
   onNavigateHome?: () => void;
+  onNavigateToPage?: (page: string) => void;
 }
 
-export default function App({ onNavigateHome }: IDEIAPageProps = {}) {
+export default function App({ onNavigateHome, onNavigateToPage }: IDEIAPageProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -152,92 +155,11 @@ export default function App({ onNavigateHome }: IDEIAPageProps = {}) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 via-white to-orange-50">
       {/* Header */}
-      <motion.header 
-        className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg border-b border-orange-100 z-50"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 120, damping: 20 }}
-      >
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <motion.div 
-            className="flex items-center"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 400 }}
-          >
-            {onNavigateHome && (
-              <Button
-                variant="ghost"
-                onClick={onNavigateHome}
-                className="mr-4 text-orange-600 hover:text-orange-700 hover:bg-orange-50 transition-all duration-200"
-              >
-                <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
-                Voltar
-              </Button>
-            )}
-            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mr-3 shadow-lg">
-              <Lightbulb className="w-9 h-9 text-white" />
-            </div>
-            <div className="hidden md:block">
-              <h1 className="text-xl font-bold text-gray-800">IDEIA</h1>
-              <p className="text-sm text-gray-600">Instituto de Desenvolvimento Inclusivo</p>
-            </div>
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.label}
-                onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 hover:text-orange-600 font-medium transition-all duration-200 relative group"
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-200 group-hover:w-full"></span>
-              </motion.button>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-gray-800 hover:text-orange-600 focus:outline-none p-2 rounded-lg hover:bg-orange-50 transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <motion.div
-          className="lg:hidden bg-white border-t border-gray-200 shadow-lg"
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ 
-            height: mobileMenuOpen ? 'auto' : 0,
-            opacity: mobileMenuOpen ? 1 : 0
-          }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          style={{ overflow: 'hidden' }}
-        >
-          <nav className="px-4 py-4 space-y-1">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.label}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-3 px-3 text-gray-700 hover:text-orange-600 hover:bg-orange-50 font-medium transition-all duration-200 rounded-lg"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {item.label}
-              </motion.button>
-            ))}
-          </nav>
-        </motion.div>
-      </motion.header>
+      <StandardHeader 
+        onNavigateHome={onNavigateHome}
+        onNavigateToPage={onNavigateToPage}
+        currentPage="ideia"
+      />
 
       {/* Parallax Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -276,7 +198,7 @@ export default function App({ onNavigateHome }: IDEIAPageProps = {}) {
               transition={{ delay: 0.4 }}
             >
               <span className="bg-gradient-to-r from-orange-600 to-orange-800 bg-clip-text text-transparent">
-                IDEIA: Cultivando o Potencial Único
+                EIBM IDEIA: Cultivando o Potencial Único
               </span>
               <br />
               <span className="text-gray-800">
@@ -858,12 +780,12 @@ export default function App({ onNavigateHome }: IDEIAPageProps = {}) {
                   <Lightbulb className="w-10 h-10 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">IDEIA</h3>
+                  <h3 className="text-xl font-bold">EIBM IDEIA</h3>
                   <p className="text-sm text-gray-400">Instituto Inclusivo</p>
                 </div>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                IDEIA - Inclusão com ética e ciência para um futuro mais inclusivo e acolhedor.
+                EIBM IDEIA - Inclusão com ética e ciência para um futuro mais inclusivo e acolhedor.
               </p>
             </motion.div>
 
@@ -944,7 +866,7 @@ export default function App({ onNavigateHome }: IDEIAPageProps = {}) {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <p>&copy; 2025 IDEIA - Instituto de Desenvolvimento Inclusivo. Todos os direitos reservados.</p>
+            <p className="text-center">&copy; 2025 EIBM IDEIA - Instituto de Desenvolvimento Inclusivo. Todos os direitos reservados.</p>
           </motion.div>
         </div>
       </footer>

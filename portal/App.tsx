@@ -19,7 +19,7 @@ export default function App() {
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (modalRef.current && activeSynopsis) {
-        const rect = modalRef.current.getBoundingClientRect();
+        const rect = (modalRef.current as HTMLElement).getBoundingClientRect();
         setMousePosition({
           x: e.clientX - rect.left,
           y: e.clientY - rect.top
@@ -618,7 +618,7 @@ export default function App() {
             {/* Menu Desktop */}
             <nav className="hidden md:block">
               <ul className="flex space-x-6">
-                <li><a href="especialidades.html" className="text-blue-700 hover:text-blue-900 font-medium">Clínica EIBM</a></li>
+                <li><a href="especialidades.html" className="text-blue-700 hover:text-blue-900 font-medium">Especialidades</a></li>
                 <li><a href="gatta.html" className="text-blue-700 hover:text-blue-900 font-medium">GATTA</a></li>
                 <li><a href="terapias.html" className="text-blue-700 hover:text-blue-900 font-medium">EIBM Terapias</a></li>
                 <li><a href="ideia.html" className="text-blue-700 hover:text-blue-900 font-medium">IDEIA</a></li>
@@ -665,8 +665,8 @@ export default function App() {
         {/* Links do Menu */}
         <nav>
           <ul className="space-y-6">
-            <li><a href="especialidades.html" className="block text-blue-700 hover:text-blue-900 font-medium text-lg">Clínica EIBM</a></li>
-            <li><a href="gatta.html" className="block text-blue-700 hover:text-blue-900 font-medium text-lg">GATTA</a></li>
+            <li><a href="especialidades.html" className="block text-blue-700 hover:text-blue-900 font-medium text-lg">Especialidades</a></li>
+            <li><a href="gatta.html" className="block text-blue-700 hover:text-blue-900 font-medium text-lg">GATTON</a></li>
             <li><a href="terapias.html" className="block text-blue-700 hover:text-blue-900 font-medium text-lg">EIBM Terapias</a></li>
             <li><a href="ideia.html" className="block text-blue-700 hover:text-blue-900 font-medium text-lg">IDEIA</a></li>
             <li><a href="contato.html" className="block text-blue-700 hover:text-blue-900 font-medium text-lg">Contato</a></li>
@@ -724,10 +724,10 @@ export default function App() {
               onClick={(e) => openSynopsis('idea', e)}
             >
               <div className="h-24 md:h-28 w-24 md:w-28 bg-yellow-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">IDEIA</span>
+                <span className="text-white font-bold text-sm">EIBM IDEIA</span>
               </div>
             </div>
-            <span className="circle-label text-yellow-600">IDEIA</span>
+            <span className="circle-label text-yellow-600">EIBM IDEIA</span>
           </div>
 
           <div 
@@ -739,10 +739,10 @@ export default function App() {
               onClick={(e) => openSynopsis('especialidades', e)}
             >
               <div className="h-24 md:h-28 w-24 md:w-28 bg-green-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">CLÍNICA</span>
+                <span className="text-white font-bold text-sm">EIBM ESPECIALIDADES</span>
               </div>
             </div>
-            <span className="circle-label text-green-600">Clínica EIBM</span>
+            <span className="circle-label text-green-600">EIBM Especialidades</span>
           </div>
         </div>
       </main>
@@ -1032,7 +1032,7 @@ export default function App() {
         </button>
         
         <div className="synopsis-header">
-          <h3 className="synopsis-title">Clínica EIBM</h3>
+          <h3 className="synopsis-title">Especialidades</h3>
           <p className="synopsis-subtitle">Especialidades Integradas e Bem-estar Multidisciplinar</p>
         </div>
         

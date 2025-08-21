@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import Header from '../components/Header';
+import { StandardHeader } from '../components/StandardHeader';
 import {
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,       
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette,
@@ -243,10 +243,10 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
     },
     {
       number: 4,
-      title: 'Plano de Treinamento Intensivo IDEIA',
+      title: 'Plano de Treinamento Intensivo EIBM IDEIA',
       subtitle: 'Marco 3 - Intervenção Especializada',
       duration: 'Duração: até 4 semanas após Marco 1',
-      description: 'Avaliamos a necessidade de um Plano de Treinamento Intensivo utilizando os ambientes inovadores do IDEIA. Atividades estruturadas e programadas são aplicadas de forma intensiva nos ambientes mais adequados.',
+      description: 'Avaliamos a necessidade de um Plano de Treinamento Intensivo utilizando os ambientes inovadores do EIBM IDEIA. Atividades estruturadas e programadas são aplicadas de forma intensiva nos ambientes mais adequados.',
       color: 'orange',
       bgGradient: 'from-orange-50/50 via-orange-100/30 to-white',
       image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&h=500&fit=crop',
@@ -366,7 +366,11 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
   return (
     <div className="min-h-screen bg-purple-50">
       {/* Header */}
-      <Header onNavigateHome={onNavigateHome} onNavigateToPage={onNavigateToPage} />
+      <StandardHeader 
+        onNavigateHome={onNavigateHome}
+        onNavigateToPage={onNavigateToPage}
+        currentPage="terapias"
+      />
 
       {/* Hero Section */}
       <section className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-300 to-white py-24 relative flex items-center">
@@ -399,7 +403,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
                 Inclusão e desenvolvimento para todas as crianças
               </h1>
               <p className="text-lg text-gray-700 mb-6">
-                IDEIA une ciência, tecnologia e equipa multidisciplinar para apoiar o desenvolvimento de crianças neurodivergentes, as suas famílias e educadores.
+                EIBM IDEIA une ciência, tecnologia e equipa multidisciplinar para apoiar o desenvolvimento de crianças neurodivergentes, as suas famílias e educadores.
               </p>
               <motion.a 
                 href="#step-1" 
@@ -448,7 +452,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
                   </div>
                 </div>
                 <span className="font-bold text-center group-hover:text-blue-800 transition-colors">
-                  IDEIA
+                  EIBM IDEIA - Centro de Terapias
                 </span>
               </motion.button>
             </AnimatedSection>
@@ -663,7 +667,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">Localização</p>
-                      <p className="text-gray-600">IDEIA - Centro de Terapias</p>
+                      <p className="text-gray-600">EIBM IDEIA - Centro de Terapias</p>
                     </div>
                   </div>
                 </div>
@@ -900,7 +904,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
           <div className="w-24 h-24 bg-gradient-to-br from-pink-100 to-orange-100 rounded-full flex items-center justify-center mb-4">
             <div className="text-4xl">💡</div>
           </div>
-          <h2 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent mb-2">IDEIA</h2>
+          <h2 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent mb-2">EIBM IDEIA</h2>
           <p className="text-gray-800 mb-4 text-center">
             Programa especializado em intervenção precoce para crianças com Transtorno do Espectro Autista (TEA), oferecendo suporte abrangente e personalizado.
           </p>
@@ -927,7 +931,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
             onClick={() => onNavigateToPage && onNavigateToPage('ideia')}
           >
             <Folder className="w-4 h-4 mr-2" />
-            Ir para IDEIA
+            Ir para EIBM IDEIA
           </Button>
         </div>
       </Modal>

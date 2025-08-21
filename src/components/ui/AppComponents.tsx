@@ -1,5 +1,4 @@
 import React from 'react';
-import { X } from 'lucide-react';
 
 interface CircleButtonProps {
   circle: {
@@ -43,29 +42,14 @@ export const CircleButton: React.FC<CircleButtonProps> = ({
 interface ModalHeaderProps {
   title: string;
   subtitle: string;
-  onClose: (e: React.MouseEvent) => void;
 }
 
-export const ModalHeader: React.FC<ModalHeaderProps> = ({ title, subtitle, onClose }) => {
-  const handleClose = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onClose(e);
-  };
-
+export const ModalHeader: React.FC<ModalHeaderProps> = ({ title, subtitle }) => {
   return (
-    <div className="synopsis-header">
-      <button 
-        className="synopsis-close morphing-button" 
-        onClick={handleClose}
-        type="button"
-        aria-label="Fechar modal"
-      >
-        <X className="w-5 h-5" />
-      </button>
+    <>
       <h3 className="synopsis-title">{title}</h3>
       <p className="synopsis-subtitle">{subtitle}</p>
-    </div>
+    </>
   );
 };
 

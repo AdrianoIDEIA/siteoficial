@@ -188,8 +188,7 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: transparent;
   z-index: var(--z-index-modal);
   display: flex;
   align-items: center;
@@ -208,8 +207,10 @@
   background: var(--neutral-100);
   border-radius: var(--border-radius-2xl);
   box-shadow: var(--shadow-xl);
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 54vw;
+  max-height: 54vh;
+  width: 600px;
+  height: 400px;
   overflow: hidden;
   transform: scale(0.9) translateY(20px);
   transition: all var(--transition-normal) var(--ease-in-out);

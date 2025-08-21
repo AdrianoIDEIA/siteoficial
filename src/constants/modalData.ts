@@ -48,7 +48,7 @@ export const MODAL_DATA: Record<string, ModalData> = {
     id: 'terapias',
     title: 'EIBM Terapias',
     subtitle: 'Equipe Integrada de Bem-estar Mental',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+    description: 'Oferecemos atendimento multidisciplinar especializado em saúde mental e desenvolvimento humano com equipe qualificada.',
     sectionTitle: 'Nossas Especialidades',
     sectionIcon: Brain,
     buttonText: 'Conhecer Terapias',
@@ -86,14 +86,14 @@ export const MODAL_DATA: Record<string, ModalData> = {
   },
   transtornos: {
     id: 'transtornos',
-    title: 'GATTA',
+    title: 'GATTON',
     subtitle: 'Grupo de Apoio e Tratamento de Transtornos Alimentares',
-    description: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+    description: 'Grupo especializado no tratamento de transtornos alimentares com abordagem médica, psicológica e nutricional integrada.',
     sectionTitle: 'Nossa Abordagem',
     sectionIcon: Shield,
-    buttonText: 'Conhecer GATTA',
+    buttonText: 'Conhecer GATTON',
     buttonIcon: Shield,
-    buttonLink: 'gatta.html',
+    buttonLink: 'gatton.html',
     colorScheme: {
       primary: '#ED3924',
       secondary: '#ef4444',
@@ -134,7 +134,7 @@ export const MODAL_DATA: Record<string, ModalData> = {
     id: 'idea',
     title: 'IDEIA',
     subtitle: 'Instituto de Desenvolvimento e Estruturação de Ambientes Inclusivos',
-    description: 'Explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.',
+    description: 'Instituto focado no desenvolvimento de ambientes inclusivos para pessoas com necessidades especiais e suas famílias.',
     sectionTitle: 'Nossos Pilares',
     sectionIcon: Lightbulb,
     buttonText: 'Descobrir IDEIA',
@@ -178,9 +178,9 @@ export const MODAL_DATA: Record<string, ModalData> = {
   },
   especialidades: {
     id: 'especialidades',
-    title: 'Clínica EIBM',
+    title: 'Especialidades',
     subtitle: 'Especialidades Integradas e Bem-estar Multidisciplinar',
-    description: 'Velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus et iusto odio dignissimos.',
+    description: 'Clínica integrada oferecendo especialidades médicas e terapêuticas com tecnologia avançada e cuidado humanizado.',
     sectionTitle: 'Diferenciais da Clínica',
     sectionIcon: Award,
     buttonText: 'Explorar Clínica',
@@ -256,8 +256,8 @@ export const CIRCLE_DATA = [
   },
   {
     id: 'transtornos',
-    label: 'GATTA',
-    displayText: 'GATTA',
+    label: 'GATTON',
+    displayText: 'GATTON',
     borderColor: 'border-red-600',
     bgColor: 'bg-red-600',
     textColor: 'text-red-600',
@@ -265,8 +265,8 @@ export const CIRCLE_DATA = [
   },
   {
     id: 'idea',
-    label: 'IDEIA',
-    displayText: 'IDEIA',
+    label: 'EIBM IDEIA',
+    displayText: 'EIBM IDEIA',
     borderColor: 'border-yellow-500',
     bgColor: 'bg-yellow-500',
     textColor: 'text-yellow-600',
@@ -274,8 +274,8 @@ export const CIRCLE_DATA = [
   },
   {
     id: 'especialidades',
-    label: 'Clínica EIBM',
-    displayText: 'CLÍNICA',
+    label: 'Especialidades',
+    displayText: 'ESPECIALIDADES',
     borderColor: 'border-green-600',
     bgColor: 'bg-green-600',
     textColor: 'text-green-600',
@@ -284,9 +284,9 @@ export const CIRCLE_DATA = [
 ];
 
 export const NAVIGATION_LINKS = [
-  { href: '/clinica', label: 'Clínica EIBM' },
-  { href: 'gatta.html', label: 'GATTA' },
+  { href: '/clinica', label: 'Especialidades' },
+  { href: 'gatton.html', label: 'GATTON' },
   { href: '/terapias', label: 'EIBM Terapias' },
-  { href: 'ideia.html', label: 'IDEIA' },
+  { href: 'ideia.html', label: 'EIBM IDEIA' },
   { href: 'contato.html', label: 'Contato' }
 ];

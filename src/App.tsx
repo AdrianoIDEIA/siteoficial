@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useModal, useMobileMenu } from './hooks';
 import { MODAL_DATA, CIRCLE_DATA } from './constants';
-import { AppHeader, AppFooter, SynopsisModal, CircleButton } from './components/ui';
+import { AppFooter, SynopsisModal, CircleButton } from './components/ui';
+import { StandardHeader } from './components/StandardHeader';
 import Portalterapias from './pages/Portalterapias';
 import FonoaudiologiaPage from './pages/FonoaudiologiaPage';
 import PsicologiaPage from './pages/PsicologiaPage';
@@ -9,6 +10,8 @@ import PsicopedagogiaPage from './pages/PsicopedagogiaPage';
 import TerapiaOcupacionalPage from './pages/TerapiaOcupacionalPage';
 import IDEIA from './pages/IDEIA';
 import ClinicaEIBM from './pages/ClinicaEIBM';
+import GattonPage from './pages/Gatton';
+import ContatosPage from './pages/Contatos';
 import './styles/App.css';
 import './styles/animations.css';
 
@@ -73,11 +76,19 @@ function App() {
   }
 
   if (currentPage === 'ideia') {
-    return <IDEIA onNavigateHome={navigateHome} />;
+    return <IDEIA onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
   }
 
   if (currentPage === 'clinica') {
-    return <ClinicaEIBM />;
+    return <ClinicaEIBM onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
+  }
+
+  if (currentPage === 'gatton') {
+    return <GattonPage onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
+  }
+
+  if (currentPage === 'contatos') {
+    return <ContatosPage onNavigateHome={navigateHome} onNavigateToPage={navigateToPage} />;
   }
 
   return (
@@ -86,12 +97,10 @@ function App() {
         id="main-background-logo"
       />
 
-      <AppHeader 
-        mobileMenuOpen={isMobileMenuOpen}
-        onMobileMenuToggle={toggleMobileMenu}
-        onMobileMenuClose={closeMenu}
-        onMobileMenuClick={(e) => e.stopPropagation()}
+      <StandardHeader 
+        onNavigateHome={navigateHome}
         onNavigateToPage={navigateToPage}
+        currentPage={currentPage}
       />
 
       <main className="container mx-auto px-4 py-16 flex flex-col items-center justify-center flex-1 relative">

@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import Header from '../components/Header';
+import { StandardHeader } from '../components/StandardHeader';
 import Footer from '../components/Footer';
 import { 
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
@@ -393,8 +393,8 @@ export default function TerapiaOcupacionalPage({ onNavigateHome, onNavigateToPag
       </div>
 
       {/* Header */}
-      <Header 
-        onNavigateHome={onNavigateHome} 
+      <StandardHeader 
+        onNavigateHome={onNavigateHome}
         onNavigateToPage={onNavigateToPage}
         currentPage="terapia-ocupacional"
       />
