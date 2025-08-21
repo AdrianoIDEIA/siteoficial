@@ -17,6 +17,7 @@ export interface ModalData {
   buttonText: string;
   buttonIcon: any;
   buttonLink: string;
+  logoUrl?: string;
   colorScheme: {
     primary: string;
     secondary: string;
@@ -54,6 +55,7 @@ export const MODAL_DATA: Record<string, ModalData> = {
     buttonText: 'Conhecer Terapias',
     buttonIcon: Sparkles,
     buttonLink: 'Portalterapias.tsx',
+    logoUrl: '/logo_eibm_terapias.svg',
     colorScheme: {
       primary: '#195184',
       secondary: '#2563eb',
@@ -86,14 +88,15 @@ export const MODAL_DATA: Record<string, ModalData> = {
   },
   transtornos: {
     id: 'transtornos',
-    title: 'GATTON',
+    title: 'GETTON',
     subtitle: 'Grupo de Apoio e Tratamento de Transtornos Alimentares',
     description: 'Grupo especializado no tratamento de transtornos alimentares com abordagem médica, psicológica e nutricional integrada.',
     sectionTitle: 'Nossa Abordagem',
     sectionIcon: Shield,
-    buttonText: 'Conhecer GATTON',
+    buttonText: 'Conhecer GETTON',
     buttonIcon: Shield,
     buttonLink: 'gatton.html',
+    logoUrl: '/logo_gatta.svg',
     colorScheme: {
       primary: '#ED3924',
       secondary: '#ef4444',
@@ -140,6 +143,7 @@ export const MODAL_DATA: Record<string, ModalData> = {
     buttonText: 'Descobrir IDEIA',
     buttonIcon: Wand2,
     buttonLink: 'ideia.html',
+    logoUrl: '/logo_ideia.svg',
     colorScheme: {
       primary: '#EFCD18',
       secondary: '#f59e0b',
@@ -186,6 +190,7 @@ export const MODAL_DATA: Record<string, ModalData> = {
     buttonText: 'Explorar Clínica',
     buttonIcon: Award,
     buttonLink: '/clinica',
+    logoUrl: '/logo_eibm_clinica.svg',
     colorScheme: {
       primary: '#6CBB45',
       secondary: '#22c55e',
@@ -252,16 +257,18 @@ export const CIRCLE_DATA = [
     borderColor: 'border-blue-700',
     bgColor: 'bg-blue-600',
     textColor: 'text-blue-700',
-    animation: 'orbit-north'
+    animation: 'orbit-north',
+    logo: '/logo_eibm_terapias.svg'
   },
   {
     id: 'transtornos',
-    label: 'GATTON',
-    displayText: 'GATTON',
+    label: 'GETTON',
+    displayText: 'GETTON',
     borderColor: 'border-red-600',
     bgColor: 'bg-red-600',
     textColor: 'text-red-600',
-    animation: 'orbit-east'
+    animation: 'orbit-east',
+    logo: '/logo_gatta.svg'
   },
   {
     id: 'idea',
@@ -270,7 +277,8 @@ export const CIRCLE_DATA = [
     borderColor: 'border-yellow-500',
     bgColor: 'bg-yellow-500',
     textColor: 'text-yellow-600',
-    animation: 'orbit-west'
+    animation: 'orbit-west',
+    logo: '/logo_ideia.svg'
   },
   {
     id: 'especialidades',
@@ -279,13 +287,14 @@ export const CIRCLE_DATA = [
     borderColor: 'border-green-600',
     bgColor: 'bg-green-600',
     textColor: 'text-green-600',
-    animation: 'orbit-south'
+    animation: 'orbit-south',
+    logo: '/logo_eibm_clinica.svg'
   }
 ];
 
 export const NAVIGATION_LINKS = [
   { href: '/clinica', label: 'Especialidades' },
-  { href: 'gatton.html', label: 'GATTON' },
+  { href: 'gatton.html', label: 'GETTON' },
   { href: '/terapias', label: 'EIBM Terapias' },
   { href: 'ideia.html', label: 'EIBM IDEIA' },
   { href: 'contato.html', label: 'Contato' }

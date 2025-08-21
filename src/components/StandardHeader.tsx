@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import LogoEIBM from './LogoEIBM';
 
 interface StandardHeaderProps {
   onNavigateHome?: () => void;
@@ -21,7 +20,7 @@ export const StandardHeader: React.FC<StandardHeaderProps> = ({
     { label: 'Terapias', page: 'terapias' },
     { label: 'Especialidades', page: 'clinica' },
     { label: 'IDEA', page: 'ideia' },
-    { label: 'Gatton', page: 'gatton' },
+    { label: 'GETTON', page: 'gatton' },
     { label: 'Contato', page: 'contatos' }
   ];
 
@@ -50,7 +49,7 @@ export const StandardHeader: React.FC<StandardHeaderProps> = ({
             className="cursor-pointer"
             onClick={() => handleMenuClick('home')}
           >
-            <LogoEIBM className="h-10 w-auto" />
+            <img src="/logo_eibm_clinica_escrito.svg" alt="EIBM Clínica" className="h-10 w-auto" />
           </motion.div>
 
           {/* Desktop Navigation */}

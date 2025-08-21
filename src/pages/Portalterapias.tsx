@@ -399,6 +399,9 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid md:grid-cols-5 gap-6 items-center">
             <AnimatedSection className="md:col-span-2 text-center md:text-left">
+              <div className="flex justify-center md:justify-start mb-3">
+                <img src="/logo_eibm_terapias.svg" alt="EIBM Terapias" className="h-48 sm:h-56 md:h-72 w-auto" />
+              </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 leading-tight">
                 Inclusão e desenvolvimento para todas as crianças
               </h1>
@@ -416,12 +419,12 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
               </motion.a>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.2} className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-3 mt-8 md:mt-0">
+            <AnimatedSection delay={0.2} className="md:col-span-3 grid grid-cols-2 md:grid-cols-2 md:grid-rows-3 gap-6 mt-8 md:mt-0">
               {therapyCards.map((therapy, index) => (
                 <motion.button
                   key={therapy.id}
                   onClick={() => openModal(therapy.id)}
-                  className={`bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center hover:shadow-xl transition-all group border-2 border-transparent hover:border-${therapy.color}-600`}
+                  className={`bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center hover:shadow-xl transition-all group border-2 border-transparent hover:border-${therapy.color}-600 col-span-1 w-full h-full min-h-[140px]`}
                   whileHover={{ scale: 1.02, y: -5 }}
                   whileTap={{ scale: 0.98 }}
                   initial={{ opacity: 0, y: 30 }}
@@ -439,7 +442,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
               
               <motion.button
                 onClick={() => openModal('clinica')}
-                className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center col-span-1 md:col-span-2 hover:shadow-xl transition-all group border-2 border-transparent hover:border-blue-600"
+                className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center col-span-2 md:col-span-2 md:row-start-3 w-full h-full min-h-[140px] hover:shadow-xl transition-all group border-2 border-transparent hover:border-blue-600"
                 whileHover={{ scale: 1.02, y: -5 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 30 }}

@@ -238,7 +238,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
                   transition={{ delay: 0.4 }}
                 >
                   <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-800 bg-clip-text text-transparent">
-                    Gatton
+                    GETTON
                   </span>
                   <br />
                   <span className="text-gray-800">
@@ -256,7 +256,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  O Gatton oferece acompanhamento especializado para transtornos alimentares, 
+                  O GETTON oferece acompanhamento especializado para transtornos alimentares, 
                   combinando expertise nutricional com abordagem terapêutica integrada. 
                   Nosso foco é restaurar uma relação saudável com a alimentação e promover 
                   o bem-estar físico e emocional.

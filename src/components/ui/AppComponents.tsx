@@ -8,6 +8,7 @@ interface CircleButtonProps {
     bgColor: string;
     textColor: string;
     label: string;
+    logo?: string;
   };
   activeSynopsis: string | null;
   onOpenSynopsis: (id: string, e: React.MouseEvent) => void;
@@ -30,8 +31,18 @@ export const CircleButton: React.FC<CircleButtonProps> = ({
         className={`circle-button w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px] ${circle.borderColor} rounded-full`}
         onClick={(e) => onOpenSynopsis(circle.id, e)}
       >
-        <div className={`h-24 md:h-28 w-24 md:w-28 ${circle.bgColor} rounded-full flex items-center justify-center`}>
-          <span className="text-white font-bold text-sm">{circle.displayText}</span>
+        <div className={`h-24 md:h-28 w-24 md:w-28 rounded-full flex items-center justify-center overflow-hidden`}
+          style={{ padding: circle.logo ? '6px' : undefined, backgroundColor: 'transparent' }}
+        >
+          {circle.logo ? (
+            <img 
+              src={circle.logo} 
+              alt={circle.label} 
+              className="max-w-full max-h-full object-contain"
+            />
+          ) : (
+            <span className="text-white font-bold text-sm">{circle.displayText}</span>
+          )}
         </div>
       </div>
       <span className={`circle-label ${circle.textColor}`}>{circle.label}</span>
@@ -47,8 +58,8 @@ interface ModalHeaderProps {
 export const ModalHeader: React.FC<ModalHeaderProps> = ({ title, subtitle }) => {
   return (
     <>
-      <h3 className="synopsis-title">{title}</h3>
-      <p className="synopsis-subtitle">{subtitle}</p>
+      <h3 className="synopsis-title text-center">{title}</h3>
+      <p className="synopsis-subtitle text-center">{subtitle}</p>
     </>
   );
 };

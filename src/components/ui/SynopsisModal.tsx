@@ -64,6 +64,16 @@ export const SynopsisModal: React.FC<SynopsisModalProps> = ({
             {/* Mouse Follower Effect */}
             {isActive && <MouseFollower mousePosition={mousePosition} />}
 
+            {modal.logoUrl && (
+              <div className="flex justify-center mt-2 mb-2">
+                <div 
+                  className="h-16 w-16 rounded-full border-2 bg-white shadow-sm flex items-center justify-center"
+                  style={{ borderColor: modal.colorScheme.primary }}
+                >
+                  <img src={modal.logoUrl} alt={modal.title} className="h-10 w-10 object-contain" />
+                </div>
+              </div>
+            )}
             <ModalHeader 
               title={modal.title}
               subtitle={modal.subtitle}
