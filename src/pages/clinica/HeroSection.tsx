@@ -104,32 +104,28 @@ export function HeroSection() {
           >
             <div className="mb-8">
               <motion.div 
-                className="w-32 h-32 bg-gradient-to-br from-primary via-primary-medium to-primary-light rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6 shadow-2xl animate-float"
+                className="w-32 h-32 rounded-full border-4 bg-white shadow-xl flex items-center justify-center mx-auto lg:mx-0 mb-6"
+                style={{ borderColor: 'var(--primary, #195184)' }}
                 whileHover={{ 
-                  scale: 1.1,
-                  rotate: 5,
-                  boxShadow: "0 20px 40px rgba(25, 81, 132, 0.3)"
+                  scale: 1.05,
+                  y: -4,
+                  boxShadow: "0 20px 40px rgba(25, 81, 132, 0.25)"
                 }}
                 transition={{ 
                   type: "spring",
-                  stiffness: 400,
-                  damping: 17
+                  stiffness: 380,
+                  damping: 18
                 }}
               >
-                <motion.span 
-                  className="text-white font-bold text-4xl select-none"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  EIBM
-                </motion.span>
+                <img src="/logo_eibm_clinica.svg" alt="EIBM Clínica" className="h-20 w-20 object-contain" />
               </motion.div>
               <motion.div 
-                className="text-2xl font-semibold text-muted-foreground"
+                className="text-2xl font-semibold text-center lg:text-left text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                Especialidades Integradas
+                Especialidades EIBM
               </motion.div>
             </div>
           </motion.div>
