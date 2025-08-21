@@ -147,7 +147,7 @@ const DisorderTypes = () => {
               <ul className="space-y-2">
                 {disorder.symptoms.map((symptom, idx) => (
                   <li key={idx} className="flex items-center text-sm text-gray-700">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-red-600 mr-2 flex-shrink-0" />
                     {symptom}
                   </li>
                 ))}
@@ -173,11 +173,11 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-rose-50 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 right-10 w-32 h-32 bg-green-200 rounded-full opacity-10"
+          className="absolute top-20 right-10 w-32 h-32 bg-red-200 rounded-full opacity-10"
           animate={{ 
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360]
@@ -189,7 +189,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
           }}
         />
         <motion.div
-          className="absolute bottom-1/3 left-1/4 w-12 h-12 sm:w-20 sm:h-20 bg-emerald-200 rounded-full opacity-20"
+          className="absolute bottom-1/3 left-1/4 w-12 h-12 sm:w-20 sm:h-20 bg-rose-200 rounded-full opacity-20"
           animate={{ 
             rotate: [0, 360],
             scale: [1, 1.2, 1]
@@ -225,7 +225,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <Badge className="bg-green-100 text-green-800 hover:bg-green-200 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
+                  <Badge className="bg-red-100 text-red-800 hover:bg-red-200 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
                     <Utensils className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Acompanhamento Nutricional Especializado
                   </Badge>
@@ -237,7 +237,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-800 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-red-600 via-rose-600 to-red-800 bg-clip-text text-transparent">
                     GETTON
                   </span>
                   <br />
@@ -284,7 +284,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
               
               {/* Floating Elements */}
               <motion.div
-                className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-green-200 to-green-300 rounded-full opacity-80 shadow-lg flex items-center justify-center"
+                className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-red-200 to-rose-300 rounded-full opacity-80 shadow-lg flex items-center justify-center"
                 animate={{ 
                   y: [0, -10, 0],
                   rotate: [0, 5, 0]
@@ -295,11 +295,11 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
                   ease: "easeInOut"
                 }}
               >
-                <Apple className="w-8 h-8 sm:w-12 sm:h-12 text-green-700" />
+                <Apple className="w-8 h-8 sm:w-12 sm:h-12 text-red-700" />
               </motion.div>
               
               <motion.div
-                className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-200 to-emerald-300 rounded-full opacity-80 shadow-lg flex items-center justify-center"
+                className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-rose-200 to-red-300 rounded-full opacity-80 shadow-lg flex items-center justify-center"
                 animate={{ 
                   y: [0, 10, 0],
                   rotate: [0, -5, 0]
@@ -311,7 +311,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
                   delay: 1
                 }}
               >
-                <Heart className="w-6 h-6 sm:w-10 sm:h-10 text-emerald-700" />
+                <Heart className="w-6 h-6 sm:w-10 sm:h-10 text-rose-700" />
               </motion.div>
             </motion.div>
           </div>
@@ -410,7 +410,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
                 >
                   <Card className="text-center h-full hover:shadow-lg transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm">
                     <CardHeader>
-                      <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
                       <CardTitle className="text-lg font-semibold text-gray-800">
@@ -431,7 +431,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
       </AnimatedSection>
 
       {/* CTA Section */}
-      <AnimatedSection className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-green-600 to-emerald-700">
+      <AnimatedSection className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-red-600 to-rose-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2 
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6"
@@ -441,7 +441,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
             Pronto para Iniciar sua Jornada de Recuperação?
           </motion.h2>
           <motion.p 
-            className="text-lg sm:text-xl text-green-100 mb-8 leading-relaxed"
+            className="text-lg sm:text-xl text-red-100 mb-8 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -449,7 +449,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
             Entre em contato conosco e dê o primeiro passo para uma relação mais saudável com a alimentação.
           </motion.p>
           <motion.button
-            className="bg-white text-green-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="bg-white text-red-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-red-50 transition-all duration-300 shadow-lg hover:shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}

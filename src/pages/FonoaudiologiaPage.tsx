@@ -647,25 +647,25 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-20">
+          <div className="grid grid-cols-2 items-stretch gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-20">
             {fundamentalConcepts.map((concept, index) => (
               <motion.div
                 key={concept.id}
+                className="h-full"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
                 onHoverStart={() => setHoveredCard(concept.id)}
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card 
-                  className={`cursor-pointer transition-all duration-500 h-full ${concept.bgColor} border-0 shadow-lg hover:shadow-2xl`}
+                  className={`cursor-pointer transition-shadow duration-300 h-[220px] sm:h-[240px] md:h-[260px] lg:h-[280px] overflow-hidden ${concept.bgColor} border-0 shadow-lg hover:shadow-2xl flex flex-col`}
                   onClick={() => setActiveService(activeService === concept.id ? null : concept.id)}
                 >
-                  <CardHeader className="pb-3 sm:pb-4">
+                  <CardHeader className="pb-3 sm:pb-4 flex-1">
                     <motion.div 
-                      className={`mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-br ${concept.color} rounded-xl sm:rounded-2xl shadow-lg w-fit`}
+                      className={`mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-br ${concept.color} rounded-xl sm:rounded-2xl shadow-lg w-fit flex-shrink-0`}
                       animate={{ 
                         rotate: hoveredCard === concept.id ? 360 : 0,
                         scale: hoveredCard === concept.id ? 1.1 : 1
@@ -676,15 +676,15 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
                         {concept.icon}
                       </div>
                     </motion.div>
-                    <CardTitle className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">{concept.title}</CardTitle>
-                    <CardDescription className="text-sm sm:text-base leading-relaxed">{concept.description}</CardDescription>
+                    <CardTitle className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-1">{concept.title}</CardTitle>
+                    <CardDescription className="text-sm sm:text-base leading-relaxed line-clamp-1">{concept.description}</CardDescription>
                   </CardHeader>
                   
                   <motion.div
                     initial={{ height: 0 }}
                     animate={{ height: activeService === concept.id ? 'auto' : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
+                    className="overflow-hidden md:hidden"
                   >
                     <CardContent className="pt-0">
                       <div className="space-y-2 sm:space-y-3">

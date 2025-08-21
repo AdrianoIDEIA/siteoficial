@@ -33,11 +33,11 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-100 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div className="absolute top-16 right-10 w-32 h-32 bg-blue-200 rounded-full opacity-10" animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }} />
-        <motion.div className="absolute bottom-1/3 left-1/4 w-12 h-12 sm:w-20 sm:h-20 bg-sky-200 rounded-full opacity-20" animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }} />
+        <motion.div className="absolute top-16 right-10 w-32 h-32 bg-emerald-200 rounded-full opacity-10" animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }} />
+        <motion.div className="absolute bottom-1/3 left-1/4 w-12 h-12 sm:w-20 sm:h-20 bg-teal-200 rounded-full opacity-20" animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }} />
       </div>
 
       <StandardHeader onNavigateHome={onNavigateHome} onNavigateToPage={onNavigateToPage} currentPage="clinica" />
@@ -49,7 +49,7 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
             <motion.div className="space-y-6 sm:space-y-8 text-center" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <div className="space-y-4 sm:space-y-6">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                  <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
+                  <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
                     <Stethoscope className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Especialidades Integradas
                   </Badge>
@@ -58,7 +58,7 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
                   <img src="/logo_eibm_clinica.svg" alt="EIBM Clínica" className="h-48 sm:h-56 md:h-72 w-auto" />
                 </div>
                 <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                  <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-600 bg-clip-text text-transparent">Especialidades EIBM</span>
+                  <span className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-green-600 bg-clip-text text-transparent">Especialidades EIBM</span>
                   <br />
                   <span className="text-gray-800">Cuidado Integrado e Tecnológico</span>
                   <br />
@@ -85,7 +85,7 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
             </motion.p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            {[{ title: 'Clínica Geral', icon: Stethoscope, color: 'from-blue-500 to-sky-600' }, { title: 'Cardiologia', icon: Heart, color: 'from-red-500 to-pink-600' }, { title: 'Neurologia', icon: Activity, color: 'from-indigo-500 to-violet-600' }, { title: 'Pediatria', icon: Syringe, color: 'from-emerald-500 to-green-600' }].map((item, index) => {
+            {[{ title: 'Clínica Geral', icon: Stethoscope, color: 'from-emerald-500 to-green-600' }, { title: 'Cardiologia', icon: Heart, color: 'from-red-500 to-pink-600' }, { title: 'Neurologia', icon: Activity, color: 'from-indigo-500 to-violet-600' }, { title: 'Pediatria', icon: Syringe, color: 'from-emerald-500 to-green-600' }].map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
@@ -124,8 +124,8 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
                 <motion.div key={b.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
                   <Card className="text-center h-full hover:shadow-lg transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm">
                     <CardHeader>
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-sky-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Icon className="w-8 h-8 text-white" />
+                      <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Icon className="w-6 h-6 text-white" />
                       </div>
                       <CardTitle className="text-lg font-semibold text-gray-800">{b.title}</CardTitle>
                     </CardHeader>
@@ -141,15 +141,15 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
       </AnimatedSection>
 
       {/* CTA */}
-      <AnimatedSection className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-sky-700">
+      <AnimatedSection className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-emerald-600 to-teal-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             Agende sua Avaliação
           </motion.h2>
-          <motion.p className="text-lg sm:text-xl text-blue-100 mb-8 leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <motion.p className="text-lg sm:text-xl text-emerald-100 mb-8 leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             Fale com nossa equipe e descubra o melhor caminho de cuidado para você.
           </motion.p>
-          <motion.button className="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => onNavigateToPage?.('contatos')}>
+          <motion.button className="bg-white text-emerald-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => onNavigateToPage?.('contatos')}>
             Agendar
           </motion.button>
         </div>
