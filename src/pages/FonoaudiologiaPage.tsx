@@ -5,6 +5,7 @@ import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { StandardHeader } from '../components/StandardHeader';
 import Footer from '../components/Footer';
+import TherapiesFooter from '../components/TherapiesFooter';
 import { 
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette, 
@@ -90,6 +91,7 @@ const DevelopmentTimeline = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div className="bg-gradient-to-r from-teal-50 to-cyan-50 p-4 sm:p-6 lg:p-8 rounded-2xl lg:rounded-3xl">
@@ -101,107 +103,89 @@ const DevelopmentTimeline = () => {
         Marcos do Desenvolvimento da Fala
       </motion.h3>
       
-      {/* Mobile Timeline - Stacked Layout */}
-      <div className="block lg:hidden space-y-4">
-        {speechMilestones.map((milestone, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="bg-white p-4 rounded-xl shadow-lg">
-              <div className="mb-3">
-                <Badge className="mb-2 bg-teal-100 text-teal-800 text-xs">{milestone.age}</Badge>
-                <h4 className="font-bold text-base text-gray-800 mb-1">{milestone.title}</h4>
-                <p className="text-gray-600 text-sm mb-2">{milestone.description}</p>
-                <button 
-                  onClick={() => setActiveIndex(activeIndex === index ? -1 : index)}
-                  className="text-teal-600 text-sm font-medium"
-                >
-                  {activeIndex === index ? 'Ver menos' : 'Ver mais'}
-                </button>
-                {activeIndex === index && (
-                  <motion.div 
-                    className="mt-2 pt-2 border-t space-y-2"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p className="text-gray-700 text-sm">{milestone.details}</p>
-                    <div className="bg-orange-50 p-2 rounded">
-                      <p className="text-orange-800 text-xs font-medium">Sinais de Alerta:</p>
-                      <p className="text-orange-700 text-xs">{milestone.alertSigns}</p>
-                    </div>
-                  </motion.div>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Desktop Timeline - Traditional Layout */}
-      <div className="hidden lg:block relative">
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-teal-400 to-teal-600 rounded-full"></div>
-        
-        <div className="space-y-8">
-          {speechMilestones.map((milestone, index) => (
-            <motion.div
-              key={index}
-              className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                <motion.div
-                  className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  onClick={() => setActiveIndex(activeIndex === index ? -1 : index)}
-                >
-                  <Badge className="mb-2 bg-teal-100 text-teal-800">{milestone.age}</Badge>
-                  <h4 className="font-bold text-lg text-gray-800 mb-2">{milestone.title}</h4>
-                  <p className="text-gray-600 text-sm mb-3">{milestone.description}</p>
-                  {activeIndex === index && (
-                    <motion.div 
-                      className="border-t pt-3 space-y-3"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-gray-700 text-sm">{milestone.details}</p>
-                      <div className="bg-orange-50 p-3 rounded">
-                        <p className="text-orange-800 text-xs font-medium mb-1">Sinais de Alerta:</p>
-                        <p className="text-orange-700 text-xs">{milestone.alertSigns}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </motion.div>
-              </div>
-              
-              <motion.div 
-                className="w-6 h-6 bg-teal-500 rounded-full border-4 border-white shadow-lg z-10 relative"
-                whileHover={{ scale: 1.3 }}
-                animate={{ scale: activeIndex === index ? 1.2 : 1 }}
+      {/* Roadmap Interativo */}
+      <div className="relative">
+        <div className="relative h-12">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <motion.div 
+              className="absolute top-0 left-0 h-2 bg-teal-500 rounded-full"
+              animate={{ width: `${(activeIndex)/(speechMilestones.length - 1) * 100}%` }}
+              transition={{ duration: 0.4 }}
+            />
+          </div>
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between">
+            {speechMilestones.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`group relative w-6 h-6 rounded-full border-2 transition-all ${index <= activeIndex ? 'bg-teal-500 border-teal-600' : 'bg-white border-gray-300'} shadow`}
+                aria-label={`Ir para etapa ${index + 1}`}
               >
-                {activeIndex === index && (
-                  <motion.div
-                    className="absolute inset-0 bg-teal-400 rounded-full"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 2, opacity: 0 }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  />
-                )}
-              </motion.div>
-              
-              <div className="w-5/12"></div>
-            </motion.div>
-          ))}
+                <span className="absolute left-1/2 -translate-x-1/2 mt-7 w-20 text-[10px] sm:text-xs text-gray-600">
+                  {speechMilestones[index].age}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
+
+        <motion.div
+          key={activeIndex}
+          className="mt-10 bg-white p-4 sm:p-6 rounded-xl shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <Badge className="mb-2 bg-teal-100 text-teal-800">{speechMilestones[activeIndex].age}</Badge>
+              <h4 className="font-bold text-lg text-gray-800 mb-1">{speechMilestones[activeIndex].title}</h4>
+              <p className="text-gray-600 text-sm mb-3">{speechMilestones[activeIndex].description}</p>
+            </div>
+          </div>
+          <div className="flex justify-center mt-2">
+            <button
+              onClick={() => setShowDetails(!showDetails)}
+              aria-expanded={showDetails}
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-teal-600 text-white font-semibold shadow-md hover:bg-teal-700 transition"
+            >
+              <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+              {showDetails ? 'Ver menos informações' : 'Ver mais informações'}
+            </button>
+          </div>
+          {showDetails && (
+            <motion.div 
+              className="mt-2 pt-3 border-t space-y-3"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="text-gray-700 text-sm">{speechMilestones[activeIndex].details}</p>
+              <div className="bg-orange-50 p-3 rounded">
+                <p className="text-orange-800 text-xs font-medium mb-1">Sinais de Alerta:</p>
+                <p className="text-orange-700 text-xs">{speechMilestones[activeIndex].alertSigns}</p>
+              </div>
+            </motion.div>
+          )}
+
+          <div className="flex items-center justify-between mt-4">
+            <button
+              onClick={() => { setActiveIndex(Math.max(0, activeIndex - 1)); }}
+              disabled={activeIndex === 0}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeIndex === 0 ? 'bg-gray-100 text-gray-400' : 'bg-teal-600 text-white hover:bg-teal-700'}`}
+            >
+              Anterior
+            </button>
+            <div className="text-xs text-gray-500">Etapa {activeIndex + 1} de {speechMilestones.length}</div>
+            <button
+              onClick={() => { setActiveIndex(Math.min(speechMilestones.length - 1, activeIndex + 1)); }}
+              disabled={activeIndex === speechMilestones.length - 1}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeIndex === speechMilestones.length - 1 ? 'bg-gray-100 text-gray-400' : 'bg-teal-600 text-white hover:bg-teal-700'}`}
+            >
+              Próximo
+            </button>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -216,6 +200,9 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
   const [activeService, setActiveService] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [disordersMode, setDisordersMode] = useState<'info' | 'aba'>('info');
+  const [activeDisorderIndex, setActiveDisorderIndex] = useState(0);
+  const [showDisorderDetails, setShowDisorderDetails] = useState(false);
 
 
   const fundamentalConcepts = [
@@ -302,6 +289,17 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
         "Dificuldades de atenção aparentes",
         "Atraso no desenvolvimento da fala",
         "Isolamento social progressivo"
+      ],
+      abaMentions: [
+        "Treinos receptivos com prompts visuais e fading",
+        "Reforçamento diferencial para atenção a instruções sonoras",
+        "Generalização em contextos naturais (casa, escola)",
+        "Uso de sistemas de comunicação alternativa quando necessário"
+      ],
+      reflection: [
+        "Observe frequência e impacto funcional (ASHA, 2021)",
+        "Considere ambientes onde o sinal aparece (BACB, 2022)",
+        "Registre exemplos práticos para discussão clínica"
       ]
     },
     {
@@ -316,6 +314,17 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
         "Uso correto é fundamental",
         "Acompanhamento profissional necessário",
         "Adaptação gradual é importante"
+      ],
+      abaMentions: [
+        "Treino de tolerância ao uso com reforço positivo",
+        "Encadeamento de passos para colocar e retirar o aparelho",
+        "Rotinas com pistas visuais e checklist",
+        "Registro de dados para acompanhamento de adesão"
+      ],
+      reflection: [
+        "Note duração diária de uso e barreiras (BACB, 2022)",
+        "Identifique antecedentes de retirada do aparelho",
+        "Monitore progresso com dados simples"
       ]
     },
     {
@@ -330,54 +339,46 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
         "Sensação de pressão no ouvido",
         "Ruídos que pioram no silêncio",
         "Sons que interferem no sono"
+      ],
+      abaMentions: [
+        "Treinos de relaxamento e respiração com reforço",
+        "Dessensibilização gradual a ambientes silenciosos",
+        "Estratégias de coping ensinadas via modelagem",
+        "Monitoramento funcional para identificar antecedentes"
+      ],
+      reflection: [
+        "Descreva quando o desconforto mais ocorre",
+        "Perceba interferência em sono/atenção (ASHA, 2020)",
+        "Avalie estratégias que parecem aliviar"
+      ]
+    },
+    {
+      title: "Hiper/Hipo-responsividade Sonora no TEA",
+      description: "Modulação sensorial auditiva e impacto na comunicação",
+      icon: <Waves className="w-5 h-5 sm:w-6 sm:h-6" />,
+      content: "Pessoas no espectro podem responder de forma aumentada ou reduzida a sons. Isso afeta atenção conjunta, tolerância a ambientes e participação social.",
+      signs: [
+        "Cobrir os ouvidos ou evitar lugares barulhentos",
+        "Busca excessiva por sons específicos",
+        "Dificuldade para filtrar ruído de fundo",
+        "Aumento de estereotipias em ambientes ruidosos"
+      ],
+      abaMentions: [
+        "Análise funcional para identificar estímulos gatilho",
+        "Dessensibilização sistemática com controle de estímulos",
+        "Treino de tolerância com reforço diferencial",
+        "Uso de fones abafadores/ruído branco como acomodação",
+        "Planejamento de generalização em ambientes reais"
+      ],
+      reflection: [
+        "Mapeie sons gatilho e intensidade (TEA/ABA clínica)",
+        "Note efeitos em participação social e aprendizagem",
+        "Registre estratégias que aumentam tolerância"
       ]
     }
   ];
 
-  const voiceHealth = [
-    {
-      title: "Rouquidão: Quando se Preocupar?",
-      description: "Nem sempre é grave, mas merece atenção",
-      icon: <Mic className="w-5 h-5 sm:w-6 sm:h-6" />,
-      content: "A rouquidão nem sempre é grave, mas é sinal de que algo afeta as cordas vocais. Dependendo da duração e sintomas, pode precisar atenção médica.",
-      whenToWorry: [
-        "Rouquidão persistente por mais de 2 semanas",
-        "Rouquidão sem causa aparente",
-        "Dor ao falar ou engolir",
-        "Sensação de corpo estranho na garganta",
-        "Tosse persistente com rouquidão",
-        "Alteração vocal progressiva"
-      ]
-    },
-    {
-      title: "Nódulo nas Pregas Vocais",
-      description: "Lesão benigna por uso incorreto da voz",
-      icon: <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6" />,
-      content: "Pequena lesão benigna, como um calo, que se forma nas cordas vocais por uso excessivo ou incorreto da voz. Tratamento é principalmente fonoaudiológico.",
-      symptoms: [
-        "Rouquidão persistente",
-        "Fadiga vocal",
-        "Dor ou desconforto ao falar",
-        "Voz soprada ou áspera",
-        "Dificuldade para cantar agudos",
-        "Sensação de esforço ao falar"
-      ]
-    },
-    {
-      title: "Cuidados com a Voz",
-      description: "Prevenção é o melhor tratamento",
-      icon: <Heart className="w-5 h-5 sm:w-6 sm:h-6" />,
-      content: "Cuidar da voz é essencial, especialmente se você a usa muito. Dicas práticas para evitar rouquidão e manter saúde vocal.",
-      tips: [
-        "Beba bastante água em temperatura ambiente",
-        "Use respiração abdominal para apoiar a voz",
-        "Evite gritar ou forçar a garganta",
-        "Dê pausas para voz descansar",
-        "Use microfone quando necessário",
-        "Evite fumo e álcool em excesso"
-      ]
-    }
-  ];
+  
 
   const multidisciplinaryApproach = [
     {
@@ -423,6 +424,79 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
       ]
     }
   ];
+
+  // Síntese (Mind Map)
+  const synthesisCenter = {
+    id: 'center',
+    title: 'Fonoaudiologia',
+    subtitle: 'Ciência da Comunicação Humana',
+    x: 50,
+    y: 50
+  };
+
+  const synthesisNodes = [
+    {
+      id: 'campos',
+      title: 'Campos de Atuação',
+      description: 'Função auditiva, vestibular, cognitiva, linguagem, fala, fluência, voz, funções orofaciais e deglutição.',
+      icon: <Stethoscope className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />,
+      angle: -40,
+      radius: 28,
+      color: 'from-teal-50 to-white'
+    },
+    {
+      id: 'desenvolvimento',
+      title: 'Desenvolvimento da Fala',
+      description: 'Marcos por idade: dos balbucios à linguagem elaborada. Identificação precoce é chave.',
+      icon: <Baby className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-600" />,
+      angle: 20,
+      radius: 30,
+      color: 'from-cyan-50 to-white'
+    },
+    {
+      id: 'disturbios',
+      title: 'Distúrbios Auditivos',
+      description: 'Perda auditiva, zumbido e aparelhos auditivos. Detecção precoce evita impactos.',
+      icon: <Ear className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />,
+      angle: 60,
+      radius: 28,
+      color: 'from-blue-50 to-white'
+    },
+    {
+      id: 'saude_vocal',
+      title: 'Saúde Vocal',
+      description: 'Prevenção e melhora de desempenho vocal. Cuidados para profissionais da voz.',
+      icon: <Volume2 className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />,
+      angle: -140,
+      radius: 30,
+      color: 'from-green-50 to-white'
+    },
+    {
+      id: 'fluencia',
+      title: 'Gagueira e Fluência',
+      description: 'Intervenção multidisciplinar pode controlar e melhorar a fluência.',
+      icon: <Waves className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />,
+      angle: 140,
+      radius: 26,
+      color: 'from-purple-50 to-white'
+    },
+    {
+      id: 'multidisciplinar',
+      title: 'Abordagem Multidisciplinar',
+      description: 'Trabalho integrado (ABA, psicologia, TO, nutrição, pedagogia, medicina).',
+      icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600" />,
+      angle: -90,
+      radius: 20,
+      color: 'from-indigo-50 to-white'
+    }
+  ];
+
+  const [synthesisIndex, setSynthesisIndex] = useState(0);
+
+  const synthesisCards = [...synthesisNodes];
+
+  const handlePrev = () => setSynthesisIndex((i) => Math.max(0, i - 1));
+  const handleNext = () => setSynthesisIndex((i) => Math.min(synthesisCards.length - 1, i + 1));
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -552,7 +626,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
                   </span>
                   <br />
                   <span className="text-gray-800">
-                    Completa
+                    ABA
                   </span>
                   <br />
                   <span className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
@@ -585,9 +659,9 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&h=600&fit=crop"
+                  src="/Noah.png"
                   alt="Fonoaudiologia e comunicação humana"
-                  className="rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-md mx-auto lg:max-w-full"
+                  className="rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-md mx-auto lg:max-w-full scale-[0.85] origin-center"
                 />
               </motion.div>
               
@@ -780,7 +854,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
                 transition={{ delay: 0.3 }}
               >
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1541450262623-b1b24b939bee?w=600&h=450&fit=crop"
+                  src="/Criança.jpg"
                   alt="Desenvolvimento da fala infantil"
                   className="w-full rounded-xl sm:rounded-2xl shadow-2xl max-w-md mx-auto lg:max-w-full"
                 />
@@ -790,249 +864,9 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
         </div>
       </section>
 
-      {/* Distúrbios da Audição */}
-      <section id="audicao" className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12 sm:mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Badge className="bg-blue-100 text-blue-800 mb-4 sm:mb-6 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
-              <Ear className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              Saúde Auditiva
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-gray-900">
-              Distúrbios da Comunicação e Audição
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto">
-              Compreenda os principais problemas auditivos e seus tratamentos
-            </p>
-          </motion.div>
+      {/* Seção removida conforme solicitação: Distúrbios da Comunicação e Audição */}
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {hearingDisorders.map((disorder, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-blue-50">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-blue-100 rounded-full">
-                        <div className="text-blue-600">
-                          {disorder.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg leading-tight">{disorder.title}</CardTitle>
-                        <CardDescription className="text-sm mt-1">{disorder.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-gray-700 leading-relaxed text-sm">{disorder.content}</p>
-                    <div className="bg-blue-50 p-3 rounded-lg">
-                      <h4 className="font-bold text-blue-800 mb-2 text-sm">
-                        {disorder.signs ? 'Sinais:' : disorder.considerations ? 'Considerações:' : 'Tipos:'}
-                      </h4>
-                      <ul className="space-y-1">
-                        {(disorder.signs || disorder.considerations || disorder.types).map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-start gap-2">
-                            <CheckCircle className="w-3 h-3 text-blue-600 mt-0.5 flex-shrink-0" />
-                            <span className="text-blue-700 text-xs">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Gagueira Section */}
-          <motion.div 
-            className="mt-16 sm:mt-20 bg-gradient-to-r from-blue-50 via-teal-50 to-blue-50 p-6 sm:p-8 lg:p-12 rounded-2xl lg:rounded-3xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <motion.div 
-                className="relative"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=450&fit=crop"
-                  alt="Tratamento de gagueira"
-                  className="w-full rounded-xl sm:rounded-2xl shadow-2xl max-w-md mx-auto lg:max-w-full"
-                />
-              </motion.div>
-              <div className="space-y-4 sm:space-y-6">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">Gagueira</h3>
-                <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed">
-                  A gagueira não tem uma "cura" no sentido tradicional, mas pode ser significativamente 
-                  controlada e melhorada com o tratamento adequado. Este envolve avaliação multidisciplinar 
-                  composta por fonoaudiólogo e psicólogos.
-                </p>
-                <div className="bg-white p-4 rounded-lg shadow-md">
-                  <h4 className="font-bold text-gray-800 mb-3">Tratamento Multidisciplinar:</h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <Mic className="w-4 h-4 text-teal-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Terapia fonoaudiológica especializada</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Brain className="w-4 h-4 text-teal-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Apoio psicológico quando necessário</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Target className="w-4 h-4 text-teal-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Técnicas específicas de fluência</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Users className="w-4 h-4 text-teal-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Orientação familiar</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Saúde Vocal */}
-      <section id="voz" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-cyan-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12 sm:mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Badge className="bg-green-100 text-green-800 mb-4 sm:mb-6 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
-              <Volume2 className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              Saúde Vocal
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-gray-900">
-              Cuidados com a Voz
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto">
-              Prevenção, cuidados e tratamento para manter sua voz saudável
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {voiceHealth.map((topic, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-green-50">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-green-100 rounded-full">
-                        <div className="text-green-600">
-                          {topic.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg leading-tight">{topic.title}</CardTitle>
-                        <CardDescription className="text-sm mt-1">{topic.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-gray-700 leading-relaxed text-sm">{topic.content}</p>
-                    <div className="bg-green-50 p-3 rounded-lg">
-                      <h4 className="font-bold text-green-800 mb-2 text-sm">
-                        {topic.whenToWorry ? 'Quando se Preocupar:' : topic.symptoms ? 'Sintomas:' : 'Dicas:'}
-                      </h4>
-                      <ul className="space-y-1">
-                        {(topic.whenToWorry || topic.symptoms || topic.tips).map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-start gap-2">
-                            <CheckCircle className="w-3 h-3 text-green-600 mt-0.5 flex-shrink-0" />
-                            <span className="text-green-700 text-xs">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Afasia Section */}
-          <motion.div 
-            className="bg-gradient-to-r from-green-50 via-teal-50 to-green-50 p-6 sm:p-8 lg:p-12 rounded-2xl lg:rounded-3xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <div className="space-y-4 sm:space-y-6">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">Afasia</h3>
-                <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed">
-                  A afasia é um distúrbio de linguagem causado por lesão em áreas do cérebro 
-                  responsáveis pela comunicação. Pode afetar fala, compreensão, leitura e escrita, 
-                  mas não afeta a inteligência.
-                </p>
-                <div className="bg-white p-4 rounded-lg shadow-md">
-                  <h4 className="font-bold text-gray-800 mb-3">Causas Principais:</h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Acidente vascular cerebral (AVC)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Shield className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Traumatismo craniano</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Brain className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Tumores cerebrais</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Zap className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">Doenças neurodegenerativas</span>
-                    </li>
-                  </ul>
-                </div>
-                <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                  <strong>Tratamento:</strong> O acompanhamento é feito por equipe multidisciplinar 
-                  para avaliar áreas afetadas e definir estímulos necessários para cada caso.
-                </p>
-              </div>
-              <motion.div 
-                className="relative order-first lg:order-last"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=450&fit=crop"
-                  alt="Tratamento de afasia"
-                  className="w-full rounded-xl sm:rounded-2xl shadow-2xl max-w-md mx-auto lg:max-w-full"
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Seção Saúde Vocal e Afasia removida conforme solicitação */}
 
       {/* TEA e Abordagem Multidisciplinar */}
       <section id="tea-multidisciplinar" className="py-16 sm:py-20 lg:py-24 bg-white">
@@ -1056,48 +890,58 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {multidisciplinaryApproach.map((approach, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-purple-50">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-purple-100 rounded-full">
-                        <div className="text-purple-600">
-                          {approach.icon}
+          {/* Roadmap vertical com cards alternados */}
+          <div className="relative max-w-6xl mx-auto">
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-200 to-indigo-300 rounded-full" />
+            <div className="space-y-10">
+              {multidisciplinaryApproach.map((approach, index) => (
+                <motion.div
+                  key={index}
+                  className={`flex items-start ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-6 text-right' : 'pl-6 text-left'}`}>
+                    <Card className="shadow-lg hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-purple-50">
+                      <CardHeader>
+                        <div className={`flex items-center gap-3 mb-4 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
+                          <div className="p-3 bg-purple-100 rounded-full text-purple-600">
+                            {approach.icon}
+                          </div>
+                          <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                            <CardTitle className="text-lg leading-tight">{approach.title}</CardTitle>
+                            <CardDescription className="text-sm mt-1">{approach.description}</CardDescription>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg leading-tight">{approach.title}</CardTitle>
-                        <CardDescription className="text-sm mt-1">{approach.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-gray-700 leading-relaxed text-sm">{approach.content}</p>
-                    <div className="bg-purple-50 p-3 rounded-lg">
-                      <h4 className="font-bold text-purple-800 mb-2 text-sm">
-                        {approach.focus ? 'Foco de Atuação:' : approach.team ? 'Equipe:' : 'Benefícios:'}
-                      </h4>
-                      <ul className="space-y-1">
-                        {(approach.focus || approach.team || approach.benefits).map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-start gap-2">
-                            <Star className="w-3 h-3 text-purple-600 mt-0.5 flex-shrink-0" />
-                            <span className="text-purple-700 text-xs">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <p className="text-gray-700 leading-relaxed text-sm">{approach.content}</p>
+                        <div className="bg-purple-50 p-3 rounded-lg">
+                          <h4 className="font-bold text-purple-800 mb-2 text-sm">{approach.focus ? 'Foco de Atuação:' : approach.team ? 'Equipe:' : 'Benefícios:'}</h4>
+                          <ul className="space-y-1">
+                            {(approach.focus || approach.team || approach.benefits).map((item, itemIndex) => (
+                              <li key={itemIndex} className={`flex items-start gap-2 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
+                                <Star className="w-3 h-3 text-purple-600 mt-0.5 flex-shrink-0" />
+                                <span className="text-purple-700 text-xs">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div className="w-2/12 flex items-center justify-center relative">
+                    <motion.div 
+                      className="w-7 h-7 bg-purple-500 rounded-full border-4 border-white shadow-lg z-10"
+                      whileHover={{ scale: 1.15 }}
+                    />
+                  </div>
+                  <div className="w-5/12" />
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           <motion.div 
@@ -1141,63 +985,25 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                title: "Campos de Atuação",
-                description: "Função auditiva, vestibular, cognitiva, linguagem oral e escrita, fala, fluência, voz, funções orofaciais e deglutição em todas as idades.",
-                icon: <Stethoscope className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />,
-                color: "from-teal-50 to-white"
-              },
-              {
-                title: "Desenvolvimento da Fala",
-                description: "Marcos específicos por idade desde balbucios aos 6 meses até linguagem elaborada aos 5 anos. Identificação precoce é fundamental.",
-                icon: <Baby className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-600" />,
-                color: "from-cyan-50 to-white"
-              },
-              {
-                title: "Distúrbios Auditivos",
-                description: "Perda auditiva, zumbido, uso de aparelhos auditivos. Detecção precoce evita impactos no desenvolvimento e qualidade de vida.",
-                icon: <Ear className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />,
-                color: "from-blue-50 to-white"
-              },
-              {
-                title: "Saúde Vocal",
-                description: "Prevenção e tratamento de rouquidão, nódulos vocais. Cuidados especiais para profissionais da voz e melhoria do desempenho vocal.",
-                icon: <Volume2 className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />,
-                color: "from-green-50 to-white"
-              },
-              {
-                title: "Gagueira e Fluência",
-                description: "Tratamento multidisciplinar com fonoaudiólogo e psicólogo. Abordagem pode controlar e melhorar significativamente a fluência.",
-                icon: <Waves className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />,
-                color: "from-purple-50 to-white"
-              },
-              {
-                title: "Abordagem Multidisciplinar",
-                description: "Trabalho integrado com outros profissionais, especialmente no TEA. Colaboração essencial para tratamento eficaz e abrangente.",
-                icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600" />,
-                color: "from-indigo-50 to-white"
-              }
-            ].map((item, index) => (
+          {/* Grade de cards lado a lado */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {synthesisCards.map((node, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+                key={node.id}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: i * 0.05 }}
               >
-                <Card className={`h-full shadow-lg border-0 bg-gradient-to-br ${item.color}`}>
+                <Card className={`h-full shadow-lg border-0 bg-gradient-to-br ${node.color}`}>
                   <CardHeader>
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-md">
-                      {item.icon}
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mb-3 shadow">
+                      {node.icon}
                     </div>
-                    <CardTitle className="text-base sm:text-lg">{item.title}</CardTitle>
+                    <CardTitle className="text-base">{node.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                      {item.description}
-                    </p>
+                    <p className="text-gray-700 text-sm leading-relaxed">{node.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -1229,28 +1035,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
       
 
       {/* Footer */}
-      <Footer
-        specialtyName="Fonoaudiologia"
-        specialtyDescription="Comunicação Humana"
-        specialtyIcon={<Mic className="w-4 h-4 sm:w-6 sm:h-6 text-white" />}
-        areas={[
-          "Linguagem e Fala",
-          "Audição",
-          "Voz",
-          "Fluência",
-          "Funções Orofaciais",
-          "Deglutição"
-        ]}
-        treatments={[
-          "Atrasos de Fala",
-          "Gagueira",
-          "Perda Auditiva",
-          "Rouquidão",
-          "Afasia",
-          "Disfagia"
-        ]}
-        aboutText="Comprometidos com a excelência em fonoaudiologia, oferecemos cuidado especializado baseado em evidências científicas."
-      />
+      <TherapiesFooter />
     </div>
   );
 }

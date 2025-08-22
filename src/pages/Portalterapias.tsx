@@ -435,7 +435,7 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                EIBM IDEIA une ciência, tecnologia e equipa multidisciplinar para apoiar o desenvolvimento de crianças neurodivergentes, as suas famílias e educadores.
+                Unimos ciência, tecnologia e uma equipe multidisciplinar para apoiar o desenvolvimento de crianças neurodivergentes, as suas famílias.
               </motion.p>
               <motion.a 
                 href="#step-1" 
@@ -519,123 +519,171 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
           >
             <div className="container mx-auto px-4 relative z-10">
               <div className="grid lg:grid-cols-12 gap-8 items-start">
-                {/* Step Number & Title - Always on left for consistency */}
-                <AnimatedSection className="lg:col-span-5 lg:pr-8" delay={0.1}>
-                  <div className="sticky top-32">
-                    {/* Step Number Circle */}
-                    <div className="flex items-center gap-6 mb-6">
-                      <div className={`bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold shadow-2xl border-4 border-white`}>
-                        {step.number}
+                {index % 2 === 0 ? (
+                  <>
+                    {/* Detalhes à esquerda */}
+                    <AnimatedSection className="lg:col-span-5 lg:pr-8" delay={0.1}>
+                      <div className="sticky top-32">
+                        <div className="flex items-center gap-6 mb-6">
+                          <div className={`bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold shadow-2xl border-4 border-white`}>
+                            {step.number}
+                          </div>
+                          <div className="flex-1">
+                            <h2 className={`text-2xl lg:text-3xl font-bold text-${step.color}-800 leading-tight mb-1`}>
+                              {step.title}
+                            </h2>
+                            <p className={`text-${step.color}-600 font-medium text-lg`}>
+                              {step.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                        <Badge className={`mb-4 bg-${step.color}-100 text-${step.color}-800 px-4 py-2`}>
+                          <Clock className="w-4 h-4 mr-2" />
+                          {step.duration}
+                        </Badge>
+                        <p className="text-lg text-gray-700 leading-relaxed mb-6">{step.description}</p>
+                        <div className={`bg-${step.color}-50 border-l-4 border-${step.color}-400 p-4 rounded-r-lg mb-6`}>
+                          <div className="flex items-center gap-2 mb-2">
+                            {step.icon}
+                            <span className={`font-bold text-${step.color}-800`}>Entregável</span>
+                          </div>
+                          <p className={`text-${step.color}-700`}>{step.deliverable}</p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h2 className={`text-2xl lg:text-3xl font-bold text-${step.color}-800 leading-tight mb-1`}>
-                          {step.title}
-                        </h2>
-                        <p className={`text-${step.color}-600 font-medium text-lg`}>
-                          {step.subtitle}
-                        </p>
+                    </AnimatedSection>
+                    {/* Conteúdo à direita */}
+                    <AnimatedSection className="lg:col-span-7" delay={0.2}>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <motion.div className="relative group order-last md:order-none" whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 300 }}>
+                          <div className={`absolute inset-0 bg-gradient-to-br from-${step.color}-200 to-${step.color}-300 rounded-2xl opacity-20 transform rotate-3 group-hover:rotate-6 transition-transform`}></div>
+                          <ImageWithFallback src={step.image} alt={`Ilustração ${step.title}`} className="w-full h-64 object-cover rounded-2xl shadow-xl relative z-10" />
+                        </motion.div>
+                        <div className="space-y-6">
+                          <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                            <CardHeader className="pb-3">
+                              <CardTitle className={`text-lg font-bold text-${step.color}-800 flex items-center gap-2`}>
+                                <Target className="w-5 h-5" />
+                                Objetivos
+                              </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                              <ul className="space-y-2">
+                                {step.objectives.map((objective, objIndex) => (
+                                  <motion.li key={objIndex} className="flex items-start gap-3 text-sm" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: objIndex * 0.1 }}>
+                                    <CheckCircle className={`w-4 h-4 text-${step.color}-500 mt-0.5 flex-shrink-0`} />
+                                    <span className="text-gray-700">{objective}</span>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </CardContent>
+                          </Card>
+                          <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                            <CardHeader className="pb-3">
+                              <CardTitle className={`text-lg font-bold text-${step.color}-800 flex items-center gap-2`}>
+                                <Settings className="w-5 h-5" />
+                                Processo
+                              </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                              <ul className="space-y-2">
+                                {step.process.map((process, processIndex) => (
+                                  <motion.li key={processIndex} className="flex items-start gap-3 text-sm" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: processIndex * 0.1 }}>
+                                    <div className={`w-6 h-6 rounded-full bg-${step.color}-100 flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                                      <span className={`text-xs font-bold text-${step.color}-600`}>{processIndex + 1}</span>
+                                    </div>
+                                    <span className="text-gray-700">{process}</span>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </CardContent>
+                          </Card>
+                        </div>
                       </div>
-                    </div>
-
-                    {/* Duration Badge */}
-                    <Badge className={`mb-4 bg-${step.color}-100 text-${step.color}-800 px-4 py-2`}>
-                      <Clock className="w-4 h-4 mr-2" />
-                      {step.duration}
-                    </Badge>
-
-                    {/* Description */}
-                    <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                      {step.description}
-                    </p>
-
-                    {/* Deliverable */}
-                    <div className={`bg-${step.color}-50 border-l-4 border-${step.color}-400 p-4 rounded-r-lg mb-6`}>
-                      <div className="flex items-center gap-2 mb-2">
-                        {step.icon}
-                        <span className={`font-bold text-${step.color}-800`}>Entregável</span>
+                    </AnimatedSection>
+                  </>
+                ) : (
+                  <>
+                    {/* Conteúdo à esquerda */}
+                    <AnimatedSection className="lg:col-span-7" delay={0.2}>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <motion.div className="relative group" whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 300 }}>
+                          <div className={`absolute inset-0 bg-gradient-to-br from-${step.color}-200 to-${step.color}-300 rounded-2xl opacity-20 transform rotate-3 group-hover:rotate-6 transition-transform`}></div>
+                          <ImageWithFallback src={step.image} alt={`Ilustração ${step.title}`} className="w-full h-64 object-cover rounded-2xl shadow-xl relative z-10" />
+                        </motion.div>
+                        <div className="space-y-6">
+                          <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                            <CardHeader className="pb-3">
+                              <CardTitle className={`text-lg font-bold text-${step.color}-800 flex items-center gap-2`}>
+                                <Target className="w-5 h-5" />
+                                Objetivos
+                              </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                              <ul className="space-y-2">
+                                {step.objectives.map((objective, objIndex) => (
+                                  <motion.li key={objIndex} className="flex items-start gap-3 text-sm" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: objIndex * 0.1 }}>
+                                    <CheckCircle className={`w-4 h-4 text-${step.color}-500 mt-0.5 flex-shrink-0`} />
+                                    <span className="text-gray-700">{objective}</span>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </CardContent>
+                          </Card>
+                          <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                            <CardHeader className="pb-3">
+                              <CardTitle className={`text-lg font-bold text-${step.color}-800 flex items-center gap-2`}>
+                                <Settings className="w-5 h-5" />
+                                Processo
+                              </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                              <ul className="space-y-2">
+                                {step.process.map((process, processIndex) => (
+                                  <motion.li key={processIndex} className="flex items-start gap-3 text-sm" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: processIndex * 0.1 }}>
+                                    <div className={`w-6 h-6 rounded-full bg-${step.color}-100 flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                                      <span className={`text-xs font-bold text-${step.color}-600`}>{processIndex + 1}</span>
+                                    </div>
+                                    <span className="text-gray-700">{process}</span>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </CardContent>
+                          </Card>
+                        </div>
                       </div>
-                      <p className={`text-${step.color}-700`}>{step.deliverable}</p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-
-                {/* Content Details */}
-                <AnimatedSection className="lg:col-span-7" delay={0.2}>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {/* Image */}
-                    <motion.div 
-                      className="relative group"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <div className={`absolute inset-0 bg-gradient-to-br from-${step.color}-200 to-${step.color}-300 rounded-2xl opacity-20 transform rotate-3 group-hover:rotate-6 transition-transform`}></div>
-                      <ImageWithFallback
-                        src={step.image}
-                        alt={`Ilustração ${step.title}`}
-                        className="w-full h-64 object-cover rounded-2xl shadow-xl relative z-10"
-                      />
-                    </motion.div>
-
-                    {/* Objectives and Process */}
-                    <div className="space-y-6">
-                      <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
-                        <CardHeader className="pb-3">
-                          <CardTitle className={`text-lg font-bold text-${step.color}-800 flex items-center gap-2`}>
-                            <Target className="w-5 h-5" />
-                            Objetivos
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <ul className="space-y-2">
-                            {step.objectives.map((objective, objIndex) => (
-                              <motion.li 
-                                key={objIndex}
-                                className="flex items-start gap-3 text-sm"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: objIndex * 0.1 }}
-                              >
-                                <CheckCircle className={`w-4 h-4 text-${step.color}-500 mt-0.5 flex-shrink-0`} />
-                                <span className="text-gray-700">{objective}</span>
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-
-                      <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
-                        <CardHeader className="pb-3">
-                          <CardTitle className={`text-lg font-bold text-${step.color}-800 flex items-center gap-2`}>
-                            <Settings className="w-5 h-5" />
-                            Processo
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <ul className="space-y-2">
-                            {step.process.map((process, processIndex) => (
-                              <motion.li 
-                                key={processIndex}
-                                className="flex items-start gap-3 text-sm"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: processIndex * 0.1 }}
-                              >
-                                <div className={`w-6 h-6 rounded-full bg-${step.color}-100 flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                                  <span className={`text-xs font-bold text-${step.color}-600`}>
-                                    {processIndex + 1}
-                                  </span>
-                                </div>
-                                <span className="text-gray-700">{process}</span>
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
-                </AnimatedSection>
+                    </AnimatedSection>
+                    {/* Detalhes à direita */}
+                    <AnimatedSection className="lg:col-span-5 lg:pl-8" delay={0.1}>
+                      <div className="sticky top-32">
+                        <div className="flex items-center gap-6 mb-6">
+                          <div className={`bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold shadow-2xl border-4 border-white`}>
+                            {step.number}
+                          </div>
+                          <div className="flex-1">
+                            <h2 className={`text-2xl lg:text-3xl font-bold text-${step.color}-800 leading-tight mb-1`}>
+                              {step.title}
+                            </h2>
+                            <p className={`text-${step.color}-600 font-medium text-lg`}>
+                              {step.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                        <Badge className={`mb-4 bg-${step.color}-100 text-${step.color}-800 px-4 py-2`}>
+                          <Clock className="w-4 h-4 mr-2" />
+                          {step.duration}
+                        </Badge>
+                        <p className="text-lg text-gray-700 leading-relaxed mb-6">{step.description}</p>
+                        <div className={`bg-${step.color}-50 border-l-4 border-${step.color}-400 p-4 rounded-r-lg mb-6`}>
+                          <div className="flex items-center gap-2 mb-2">
+                            {step.icon}
+                            <span className={`font-bold text-${step.color}-800`}>Entregável</span>
+                          </div>
+                          <p className={`text-${step.color}-700`}>{step.deliverable}</p>
+                        </div>
+                      </div>
+                    </AnimatedSection>
+                  </>
+                )}
               </div>
             </div>
 
@@ -647,120 +695,42 @@ export default function Portalterapias({ onNavigateHome, onNavigateToPage }: Por
         ))}
       </div>
 
-      {/* Contact Section */}
-      <section id="contacto" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-blue-50 to-white">
+      {/* Cards: Instagram, IDEIA e Contato */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12 sm:mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Badge className="bg-blue-100 text-blue-800 mb-4 sm:mb-6 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
-              <Heart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              Entre em Contacto
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
-              Estamos Aqui Para Ajudar
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Entre em contacto connosco para saber mais sobre os nossos serviços ou para agendar uma consulta. 
-              A nossa equipa está pronta para apoiar o desenvolvimento do seu filho.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Contact Information */}
-            <motion.div 
-              className="space-y-6"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.a
+              href="https://instagram.com/eibmterapias"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-2xl p-6 shadow-lg flex flex-col items-start hover:shadow-xl transition"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Informações de Contacto</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="bg-blue-100 p-2 rounded-lg">
-                      <FileText className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Email</p>
-                      <p className="text-gray-600">info@eibmterapias.pt</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="bg-green-100 p-2 rounded-lg">
-                      <Clock className="w-5 h-5 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Horário de Funcionamento</p>
-                      <p className="text-gray-600">Segunda a Sexta: 9h00 - 18h00</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="bg-purple-100 p-2 rounded-lg">
-                      <Home className="w-5 h-5 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Localização</p>
-                      <p className="text-gray-600">EIBM IDEIA - Centro de Terapias</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div 
-              className="bg-white rounded-2xl p-6 shadow-lg"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              <Badge className="mb-3 bg-pink-100 text-pink-700">Instagram</Badge>
+              <p className="text-gray-700">Siga conteúdos e novidades no nosso perfil @eibmterapias.</p>
+            </motion.a>
+            <motion.button
+              onClick={() => onNavigateToPage && onNavigateToPage('ideia')}
+              className="bg-white rounded-2xl p-6 shadow-lg text-left hover:shadow-xl transition"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Envie-nos uma Mensagem</h3>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="O seu nome"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="o.seu.email@exemplo.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Assunto</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <option>Informações Gerais</option>
-                    <option>Terapia Ocupacional</option>
-                    <option>Fonoaudiologia</option>
-                    <option>Psicologia</option>
-                    <option>Psicopedagogia</option>
-                    <option>Agendar Consulta</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Como podemos ajudar?"
-                  ></textarea>
-                </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  <Heart className="w-4 h-4 mr-2" />
-                  Enviar Mensagem
-                </Button>
-              </form>
-            </motion.div>
+              <Badge className="mb-3 bg-purple-100 text-purple-700">IDEIA</Badge>
+              <p className="text-gray-700">Conheça o EIBM IDEIA - Centro de Terapias e os nossos ambientes.</p>
+            </motion.button>
+            <motion.button
+              onClick={() => onNavigateToPage && onNavigateToPage('contatos')}
+              className="bg-white rounded-2xl p-6 shadow-lg text-left hover:shadow-xl transition"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Badge className="mb-3 bg-blue-100 text-blue-700">Contato</Badge>
+              <p className="text-gray-700">Fale connosco para informações e agendamentos.</p>
+            </motion.button>
           </div>
         </div>
       </section>

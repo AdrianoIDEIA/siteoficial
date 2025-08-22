@@ -5,6 +5,7 @@ import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { StandardHeader } from '../components/StandardHeader';
 import Footer from '../components/Footer';
+import TherapiesFooter from '../components/TherapiesFooter';
 import { 
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette, 
@@ -931,26 +932,7 @@ export default function TerapiaOcupacionalPage({ onNavigateHome, onNavigateToPag
         </div>
       </section>
 
-      <Footer
-        specialtyName="EIBM Terapia Ocupacional"
-        specialtyDescription="Portfólio Educativo"
-        specialtyIcon={<Heart className="w-4 h-4 sm:w-6 sm:h-6 text-white" />}
-        areas={[
-          "Conceitos Fundamentais",
-          "Desenvolvimento Infantil",
-          "Autismo e TEA",
-          "Reabilitação Física",
-          "Saúde Mental"
-        ]}
-        treatments={[
-          "Pediatria",
-          "Neurologia",
-          "Geriatria",
-          "Ortopedia",
-          "Psiquiatria"
-        ]}
-        aboutText="Material educativo desenvolvido para demonstrar conhecimentos em Terapia Ocupacional e suas aplicações práticas em diferentes contextos terapêuticos."
-      />
+      <TherapiesFooter />
     </div>
   );
 }

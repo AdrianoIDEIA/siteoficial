@@ -5,6 +5,7 @@ import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { StandardHeader } from '../components/StandardHeader';
 import Footer from '../components/Footer';
+import TherapiesFooter from '../components/TherapiesFooter';
 import { 
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette, 
@@ -1054,26 +1055,7 @@ export default function PsicopedagogiaPage({ onNavigateHome, onNavigateToPage }:
         </div>
       </section>
 
-      <Footer
-        specialtyName="EIBM Psicopedagogia"
-        specialtyDescription="Desvendando Potenciais"
-        specialtyIcon={<GraduationCap className="w-4 h-4 sm:w-6 sm:h-6 text-white" />}
-        areas={[
-          "Dislexia",
-          "Discalculia",
-          "Disgrafia",
-          "TDAH",
-          "Dificuldades Atencionais"
-        ]}
-        treatments={[
-          "Flexibilidade Cognitiva",
-          "Planejamento",
-          "Memória de Trabalho",
-          "Regulação Emocional",
-          "Organização"
-        ]}
-        aboutText="Especialistas em desenvolvimento de potenciais de aprendizagem, com abordagem científica e humanizada para cada criança."
-      />
+      <TherapiesFooter />
     </div>
   );
 }

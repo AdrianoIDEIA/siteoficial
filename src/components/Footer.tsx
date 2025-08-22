@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import LogoEIBM from './LogoEIBM';
+import { Facebook, Instagram, Twitter, Github, Youtube } from 'lucide-react';
 
 interface FooterProps {
   specialtyName: string;
@@ -53,9 +54,9 @@ const Footer: React.FC<FooterProps> = ({
             transition={{ delay: 0.1 }}
           >
             <h4 className="text-sm sm:text-base font-bold mb-4 sm:mb-6">Áreas de Atuação</h4>
-            <ul className="space-y-2 sm:space-y-3 text-gray-400 text-xs sm:text-sm">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 text-gray-400 text-xs sm:text-sm">
               {areas.map((area, index) => (
-                <li key={index}>{area}</li>
+                <li key={index} className="whitespace-nowrap">{area}</li>
               ))}
             </ul>
           </motion.div>
@@ -67,9 +68,9 @@ const Footer: React.FC<FooterProps> = ({
             transition={{ delay: 0.2 }}
           >
             <h4 className="text-sm sm:text-base font-bold mb-4 sm:mb-6">Distúrbios Tratados</h4>
-            <ul className="space-y-2 sm:space-y-3 text-gray-400 text-xs sm:text-sm">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 text-gray-400 text-xs sm:text-sm">
               {treatments.map((treatment, index) => (
-                <li key={index}>{treatment}</li>
+                <li key={index} className="whitespace-nowrap">{treatment}</li>
               ))}
             </ul>
           </motion.div>
@@ -88,12 +89,21 @@ const Footer: React.FC<FooterProps> = ({
         </div>
         
         <motion.div 
-          className="border-t border-gray-700 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-gray-400"
+          className="mt-8 sm:mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <p className="text-xs sm:text-sm">&copy; 2025 EIBM {specialtyName} - Todos os direitos reservados</p>
+          <div className="bg-gray-800/60 rounded-xl px-4 py-4 flex items-center justify-between">
+            <p className="text-xs sm:text-sm text-gray-400">&copy; {new Date().getFullYear()} EIBM Terapias. Todos os direitos reservados.</p>
+            <div className="flex items-center gap-4 text-gray-400">
+              <a href="#" aria-label="Facebook" className="hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
+              <a href="#" aria-label="Instagram" className="hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
+              <a href="#" aria-label="Twitter" className="hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
+              <a href="#" aria-label="GitHub" className="hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
+              <a href="#" aria-label="YouTube" className="hover:text-white transition-colors"><Youtube className="w-5 h-5" /></a>
+            </div>
+          </div>
         </motion.div>
       </div>
     </footer>

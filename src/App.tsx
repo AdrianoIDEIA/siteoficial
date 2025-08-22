@@ -38,6 +38,10 @@ function App() {
     }
   };
 
+  // Expor navegação globalmente para componentes desacoplados (ex.: rodapé)
+  // Uso: (window as any).navigateToPage('contatos')
+  (window as any).navigateToPage = navigateToPage;
+
   const navigateHome = () => {
     setCurrentPage('home');
   };

@@ -5,6 +5,7 @@ import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { StandardHeader } from '../components/StandardHeader';
 import Footer from '../components/Footer';
+import TherapiesFooter from '../components/TherapiesFooter';
 import { 
   Heart, Users, Brain, Gamepad2, CheckCircle, Target, Activity, Sparkles, Baby, GraduationCap,
   Puzzle, Lightbulb, Settings, Zap, Shield, Eye, Ear, Hand, Book, Palette, 
@@ -1097,26 +1098,7 @@ export default function App({ onNavigateHome, onNavigateToPage }: PsicologiaPage
         </div>
       </section>
 
-      <Footer
-        specialtyName="EIBM Psicologia TEA/ABA"
-        specialtyDescription="Comportamental Aplicada"
-        specialtyIcon={<Brain className="w-4 h-4 sm:w-6 sm:h-6 text-white" />}
-        areas={[
-          "Transtorno do Espectro Autista",
-          "Análise Comportamental Aplicada",
-          "Habilidades Sociais",
-          "Comunicação Funcional",
-          "Autorregulação"
-        ]}
-        treatments={[
-          "Análise Funcional",
-          "Reforçamento Diferencial",
-          "Ensino Estruturado",
-          "Coleta de Dados",
-          "Treinamento Parental"
-        ]}
-        aboutText="Especialistas em desenvolvimento comportamental com abordagem científica e humanizada para crianças no espectro autista."
-      />
+      <TherapiesFooter />
     </div>
   );
 }
