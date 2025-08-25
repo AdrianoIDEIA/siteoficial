@@ -398,6 +398,8 @@ export default function TerapiaOcupacionalPage({ onNavigateHome, onNavigateToPag
         onNavigateHome={onNavigateHome}
         onNavigateToPage={onNavigateToPage}
         currentPage="terapia-ocupacional"
+        logoSrc="/logo_eibm_terapias_escrito.svg"
+        appearance="glass"
       />
 
       {/* Hero Section */}

@@ -159,6 +159,8 @@ export default function App({ onNavigateHome, onNavigateToPage }: IDEIAPageProps
         onNavigateHome={onNavigateHome}
         onNavigateToPage={onNavigateToPage}
         currentPage="ideia"
+        logoSrc="/logo_ideia_escrito.svg"
+        appearance="glass"
       />
 
       {/* Parallax Background Elements */}

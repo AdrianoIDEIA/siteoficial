@@ -207,6 +207,7 @@ export default function GattonPage({ onNavigateHome, onNavigateToPage }: GattonP
         onNavigateHome={onNavigateHome}
         onNavigateToPage={onNavigateToPage}
         currentPage="gatton"
+        logoSrc="/logo_eibm_clinica_escrito.svg"
       />
 
       {/* Hero Section */}

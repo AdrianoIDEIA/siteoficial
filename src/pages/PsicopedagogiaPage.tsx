@@ -431,6 +431,8 @@ export default function PsicopedagogiaPage({ onNavigateHome, onNavigateToPage }:
         onNavigateHome={onNavigateHome}
         onNavigateToPage={onNavigateToPage}
         currentPage="psicopedagogia"
+        logoSrc="/logo_eibm_terapias_escrito.svg"
+        appearance="glass"
       />
 
       {/* Hero Section */}

@@ -494,6 +494,8 @@ export default function App({ onNavigateHome, onNavigateToPage }: PsicologiaPage
         onNavigateHome={onNavigateHome}
         onNavigateToPage={onNavigateToPage}
         currentPage="psicologia"
+        logoSrc="/logo_eibm_terapias_escrito.svg"
+        appearance="glass"
       />
 
       {/* Hero Section */}

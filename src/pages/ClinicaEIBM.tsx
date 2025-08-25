@@ -40,7 +40,7 @@ export default function ClinicaEIBM({ onNavigateHome, onNavigateToPage }: Clinic
         <motion.div className="absolute bottom-1/3 left-1/4 w-12 h-12 sm:w-20 sm:h-20 bg-teal-200 rounded-full opacity-20" animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }} />
       </div>
 
-      <StandardHeader onNavigateHome={onNavigateHome} onNavigateToPage={onNavigateToPage} currentPage="clinica" />
+      <StandardHeader onNavigateHome={onNavigateHome} onNavigateToPage={onNavigateToPage} currentPage="clinica" logoSrc="/logo_eibm_clinica_escrito.svg" appearance="glass" />
 
       {/* Hero */}
       <section className="pt-12 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 lg:pt-32 lg:pb-24 relative overflow-hidden">

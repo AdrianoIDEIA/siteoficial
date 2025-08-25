@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useModal, useMobileMenu } from './hooks';
 import { MODAL_DATA, CIRCLE_DATA } from './constants';
-import { AppFooter, SynopsisModal, CircleButton } from './components/ui';
+import { SynopsisModal, CircleButton } from './components/ui';
 import { StandardHeader } from './components/StandardHeader';
 import Portalterapias from './pages/Portalterapias';
 import FonoaudiologiaPage from './pages/FonoaudiologiaPage';
@@ -105,6 +105,8 @@ function App() {
         onNavigateHome={navigateHome}
         onNavigateToPage={navigateToPage}
         currentPage={currentPage}
+        showLogo={false}
+        align="center"
       />
 
       <main className="container mx-auto px-4 py-16 flex flex-col items-center justify-center flex-1 relative">
@@ -140,7 +142,7 @@ function App() {
 
 
 
-      <AppFooter />
+      
     </div>
   );
 }

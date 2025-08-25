@@ -589,6 +589,8 @@ export default function App({ onNavigateHome, onNavigateToPage }: Fonoaudiologia
         onNavigateHome={onNavigateHome}
         onNavigateToPage={onNavigateToPage}
         currentPage="fonoaudiologia"
+        logoSrc="/logo_eibm_terapias_escrito.svg"
+        appearance="glass"
       />
 
 
